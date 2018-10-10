@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.PropertiesMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.Properties" >
+    <id column="pro_id" property="proId" jdbcType="BIGINT" />
+    <result column="region_id" property="regionId" jdbcType="BIGINT" />
+    <result column="building_id" property="buildingId" jdbcType="BIGINT" />
+    <result column="pro_number" property="proNumber" jdbcType="VARCHAR" />
+    <result column="pro_area" property="proArea" jdbcType="INTEGER" />
+    <result column="pro_univalent" property="proUnivalent" jdbcType="DECIMAL" />
+    <result column="pro_ammeter" property="proAmmeter" jdbcType="CHAR" />
+    <result column="pro_type" property="proType" jdbcType="CHAR" />
+    <result column="pro_status" property="proStatus" jdbcType="CHAR" />
+    <result column="apply_time" property="applyTime" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="entrepreneurialcenter.office.pojo.Properties" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pro_id, region_id, building_id, pro_number, pro_area, pro_univalent, pro_ammeter, 
+    pro_type, pro_status, apply_time, updated, created
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="entrepreneurialcenter.office.pojo.PropertiesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from properties
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.PropertiesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from properties
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from properties
+    where pro_id = #{proId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from properties
+    where pro_id = #{proId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.PropertiesExample" >
+    delete from properties
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.Properties" >
+    insert into properties (pro_id, region_id, building_id, 
+      pro_number, pro_area, pro_univalent, 
+      pro_ammeter, pro_type, pro_status, 
+      apply_time, updated, created, 
+      remark)
+    values (#{proId,jdbcType=BIGINT}, #{regionId,jdbcType=BIGINT}, #{buildingId,jdbcType=BIGINT}, 
+      #{proNumber,jdbcType=VARCHAR}, #{proArea,jdbcType=INTEGER}, #{proUnivalent,jdbcType=DECIMAL}, 
+      #{proAmmeter,jdbcType=CHAR}, #{proType,jdbcType=CHAR}, #{proStatus,jdbcType=CHAR}, 
+      #{applyTime,jdbcType=INTEGER}, #{updated,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.Properties" >
+    insert into properties
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proId != null" >
+        pro_id,
+      </if>
+      <if test="regionId != null" >
+        region_id,
+      </if>
+      <if test="buildingId != null" >
+        building_id,
+      </if>
+      <if test="proNumber != null" >
+        pro_number,
+      </if>
+      <if test="proArea != null" >
+        pro_area,
+      </if>
+      <if test="proUnivalent != null" >
+        pro_univalent,
+      </if>
+      <if test="proAmmeter != null" >
+        pro_ammeter,
+      </if>
+      <if test="proType != null" >
+        pro_type,
+      </if>
+      <if test="proStatus != null" >
+        pro_status,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proId != null" >
+        #{proId,jdbcType=BIGINT},
+      </if>
+      <if test="regionId != null" >
+        #{regionId,jdbcType=BIGINT},
+      </if>
+      <if test="buildingId != null" >
+        #{buildingId,jdbcType=BIGINT},
+      </if>
+      <if test="proNumber != null" >
+        #{proNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="proArea != null" >
+        #{proArea,jdbcType=INTEGER},
+      </if>
+      <if test="proUnivalent != null" >
+        #{proUnivalent,jdbcType=DECIMAL},
+      </if>
+      <if test="proAmmeter != null" >
+        #{proAmmeter,jdbcType=CHAR},
+      </if>
+      <if test="proType != null" >
+        #{proType,jdbcType=CHAR},
+      </if>
+      <if test="proStatus != null" >
+        #{proStatus,jdbcType=CHAR},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.PropertiesExample" resultType="java.lang.Integer" >
+    select count(*) from properties
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update properties
+    <set >
+      <if test="record.proId != null" >
+        pro_id = #{record.proId,jdbcType=BIGINT},
+      </if>
+      <if test="record.regionId != null" >
+        region_id = #{record.regionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.buildingId != null" >
+        building_id = #{record.buildingId,jdbcType=BIGINT},
+      </if>
+      <if test="record.proNumber != null" >
+        pro_number = #{record.proNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proArea != null" >
+        pro_area = #{record.proArea,jdbcType=INTEGER},
+      </if>
+      <if test="record.proUnivalent != null" >
+        pro_univalent = #{record.proUnivalent,jdbcType=DECIMAL},
+      </if>
+      <if test="record.proAmmeter != null" >
+        pro_ammeter = #{record.proAmmeter,jdbcType=CHAR},
+      </if>
+      <if test="record.proType != null" >
+        pro_type = #{record.proType,jdbcType=CHAR},
+      </if>
+      <if test="record.proStatus != null" >
+        pro_status = #{record.proStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.applyTime != null" >
+        apply_time = #{record.applyTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update properties
+    set pro_id = #{record.proId,jdbcType=BIGINT},
+      region_id = #{record.regionId,jdbcType=BIGINT},
+      building_id = #{record.buildingId,jdbcType=BIGINT},
+      pro_number = #{record.proNumber,jdbcType=VARCHAR},
+      pro_area = #{record.proArea,jdbcType=INTEGER},
+      pro_univalent = #{record.proUnivalent,jdbcType=DECIMAL},
+      pro_ammeter = #{record.proAmmeter,jdbcType=CHAR},
+      pro_type = #{record.proType,jdbcType=CHAR},
+      pro_status = #{record.proStatus,jdbcType=CHAR},
+      apply_time = #{record.applyTime,jdbcType=INTEGER},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update properties
+    set pro_id = #{record.proId,jdbcType=BIGINT},
+      region_id = #{record.regionId,jdbcType=BIGINT},
+      building_id = #{record.buildingId,jdbcType=BIGINT},
+      pro_number = #{record.proNumber,jdbcType=VARCHAR},
+      pro_area = #{record.proArea,jdbcType=INTEGER},
+      pro_univalent = #{record.proUnivalent,jdbcType=DECIMAL},
+      pro_ammeter = #{record.proAmmeter,jdbcType=CHAR},
+      pro_type = #{record.proType,jdbcType=CHAR},
+      pro_status = #{record.proStatus,jdbcType=CHAR},
+      apply_time = #{record.applyTime,jdbcType=INTEGER},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.Properties" >
+    update properties
+    <set >
+      <if test="regionId != null" >
+        region_id = #{regionId,jdbcType=BIGINT},
+      </if>
+      <if test="buildingId != null" >
+        building_id = #{buildingId,jdbcType=BIGINT},
+      </if>
+      <if test="proNumber != null" >
+        pro_number = #{proNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="proArea != null" >
+        pro_area = #{proArea,jdbcType=INTEGER},
+      </if>
+      <if test="proUnivalent != null" >
+        pro_univalent = #{proUnivalent,jdbcType=DECIMAL},
+      </if>
+      <if test="proAmmeter != null" >
+        pro_ammeter = #{proAmmeter,jdbcType=CHAR},
+      </if>
+      <if test="proType != null" >
+        pro_type = #{proType,jdbcType=CHAR},
+      </if>
+      <if test="proStatus != null" >
+        pro_status = #{proStatus,jdbcType=CHAR},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pro_id = #{proId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entrepreneurialcenter.office.pojo.Properties" >
+    update properties
+    set region_id = #{regionId,jdbcType=BIGINT},
+      building_id = #{buildingId,jdbcType=BIGINT},
+      pro_number = #{proNumber,jdbcType=VARCHAR},
+      pro_area = #{proArea,jdbcType=INTEGER},
+      pro_univalent = #{proUnivalent,jdbcType=DECIMAL},
+      pro_ammeter = #{proAmmeter,jdbcType=CHAR},
+      pro_type = #{proType,jdbcType=CHAR},
+      pro_status = #{proStatus,jdbcType=CHAR},
+      apply_time = #{applyTime,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where pro_id = #{proId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.Properties" >
+    update properties
+    set region_id = #{regionId,jdbcType=BIGINT},
+      building_id = #{buildingId,jdbcType=BIGINT},
+      pro_number = #{proNumber,jdbcType=VARCHAR},
+      pro_area = #{proArea,jdbcType=INTEGER},
+      pro_univalent = #{proUnivalent,jdbcType=DECIMAL},
+      pro_ammeter = #{proAmmeter,jdbcType=CHAR},
+      pro_type = #{proType,jdbcType=CHAR},
+      pro_status = #{proStatus,jdbcType=CHAR},
+      apply_time = #{applyTime,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER}
+    where pro_id = #{proId,jdbcType=BIGINT}
+  </update>
+</mapper>

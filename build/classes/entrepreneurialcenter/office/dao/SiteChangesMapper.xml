@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.SiteChangesMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.SiteChanges" >
+    <id column="site_id" property="siteId" jdbcType="INTEGER" />
+    <result column="site_company" property="siteCompany" jdbcType="VARCHAR" />
+    <result column="site_garden" property="siteGarden" jdbcType="VARCHAR" />
+    <result column="site_number" property="siteNumber" jdbcType="VARCHAR" />
+    <result column="site_area" property="siteArea" jdbcType="DOUBLE" />
+    <result column="site_date" property="siteDate" jdbcType="DATE" />
+    <result column="site_applyarea" property="siteApplyarea" jdbcType="DOUBLE" />
+    <result column="site_product" property="siteProduct" jdbcType="VARCHAR" />
+    <result column="ind_id" property="indId" jdbcType="BIGINT" />
+    <result column="site_ip" property="siteIp" jdbcType="VARCHAR" />
+    <result column="site_address" property="siteAddress" jdbcType="VARCHAR" />
+    <result column="site_formed" property="siteFormed" jdbcType="DATE" />
+    <result column="site_lawperson" property="siteLawperson" jdbcType="VARCHAR" />
+    <result column="site_lawphone" property="siteLawphone" jdbcType="VARCHAR" />
+    <result column="site_lawemail" property="siteLawemail" jdbcType="VARCHAR" />
+    <result column="site_linkname" property="siteLinkname" jdbcType="VARCHAR" />
+    <result column="site_linkphone" property="siteLinkphone" jdbcType="VARCHAR" />
+    <result column="site_linkfax" property="siteLinkfax" jdbcType="VARCHAR" />
+    <result column="site_linkemail" property="siteLinkemail" jdbcType="VARCHAR" />
+    <result column="site_lastsale" property="siteLastsale" jdbcType="DOUBLE" />
+    <result column="site_lastratal" property="siteLastratal" jdbcType="DOUBLE" />
+    <result column="site_capital" property="siteCapital" jdbcType="DOUBLE" />
+    <result column="site_ytdsale" property="siteYtdsale" jdbcType="DOUBLE" />
+    <result column="site_ytdratal" property="siteYtdratal" jdbcType="DOUBLE" />
+    <result column="site_headcount" property="siteHeadcount" jdbcType="INTEGER" />
+    <result column="site_drma" property="siteDrma" jdbcType="INTEGER" />
+    <result column="site_undergraduate" property="siteUndergraduate" jdbcType="INTEGER" />
+    <result column="site_basecase" property="siteBasecase" jdbcType="VARCHAR" />
+    <result column="site_businesscase" property="siteBusinesscase" jdbcType="VARCHAR" />
+    <result column="site_explain" property="siteExplain" jdbcType="VARCHAR" />
+    <result column="site_check" property="siteCheck" jdbcType="INTEGER" />
+    <result column="site_create" property="siteCreate" jdbcType="DATE" />
+    <result column="site_update" property="siteUpdate" jdbcType="DATE" />
+    <result column="front_id" property="frontId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    site_id, site_company, site_garden, site_number, site_area, site_date, site_applyarea, 
+    site_product, ind_id, site_ip, site_address, site_formed, site_lawperson, site_lawphone, 
+    site_lawemail, site_linkname, site_linkphone, site_linkfax, site_linkemail, site_lastsale, 
+    site_lastratal, site_capital, site_ytdsale, site_ytdratal, site_headcount, site_drma, 
+    site_undergraduate, site_basecase, site_businesscase, site_explain, site_check, site_create, 
+    site_update, front_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.SiteChangesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from site_changes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from site_changes
+    where site_id = #{siteId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from site_changes
+    where site_id = #{siteId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.SiteChangesExample" >
+    delete from site_changes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.SiteChanges" >
+    insert into site_changes (site_id, site_company, site_garden, 
+      site_number, site_area, site_date, 
+      site_applyarea, site_product, ind_id, 
+      site_ip, site_address, site_formed, 
+      site_lawperson, site_lawphone, site_lawemail, 
+      site_linkname, site_linkphone, site_linkfax, 
+      site_linkemail, site_lastsale, site_lastratal, 
+      site_capital, site_ytdsale, site_ytdratal, 
+      site_headcount, site_drma, site_undergraduate, 
+      site_basecase, site_businesscase, site_explain, 
+      site_check, site_create, site_update, 
+      front_id)
+    values (#{siteId,jdbcType=INTEGER}, #{siteCompany,jdbcType=VARCHAR}, #{siteGarden,jdbcType=VARCHAR}, 
+      #{siteNumber,jdbcType=VARCHAR}, #{siteArea,jdbcType=DOUBLE}, #{siteDate,jdbcType=DATE}, 
+      #{siteApplyarea,jdbcType=DOUBLE}, #{siteProduct,jdbcType=VARCHAR}, #{indId,jdbcType=BIGINT}, 
+      #{siteIp,jdbcType=VARCHAR}, #{siteAddress,jdbcType=VARCHAR}, #{siteFormed,jdbcType=DATE}, 
+      #{siteLawperson,jdbcType=VARCHAR}, #{siteLawphone,jdbcType=VARCHAR}, #{siteLawemail,jdbcType=VARCHAR}, 
+      #{siteLinkname,jdbcType=VARCHAR}, #{siteLinkphone,jdbcType=VARCHAR}, #{siteLinkfax,jdbcType=VARCHAR}, 
+      #{siteLinkemail,jdbcType=VARCHAR}, #{siteLastsale,jdbcType=DOUBLE}, #{siteLastratal,jdbcType=DOUBLE}, 
+      #{siteCapital,jdbcType=DOUBLE}, #{siteYtdsale,jdbcType=DOUBLE}, #{siteYtdratal,jdbcType=DOUBLE}, 
+      #{siteHeadcount,jdbcType=INTEGER}, #{siteDrma,jdbcType=INTEGER}, #{siteUndergraduate,jdbcType=INTEGER}, 
+      #{siteBasecase,jdbcType=VARCHAR}, #{siteBusinesscase,jdbcType=VARCHAR}, #{siteExplain,jdbcType=VARCHAR}, 
+      #{siteCheck,jdbcType=INTEGER}, #{siteCreate,jdbcType=DATE}, #{siteUpdate,jdbcType=DATE}, 
+      #{frontId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.SiteChanges" >
+    insert into site_changes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="siteId != null" >
+        site_id,
+      </if>
+      <if test="siteCompany != null" >
+        site_company,
+      </if>
+      <if test="siteGarden != null" >
+        site_garden,
+      </if>
+      <if test="siteNumber != null" >
+        site_number,
+      </if>
+      <if test="siteArea != null" >
+        site_area,
+      </if>
+      <if test="siteDate != null" >
+        site_date,
+      </if>
+      <if test="siteApplyarea != null" >
+        site_applyarea,
+      </if>
+      <if test="siteProduct != null" >
+        site_product,
+      </if>
+      <if test="indId != null" >
+        ind_id,
+      </if>
+      <if test="siteIp != null" >
+        site_ip,
+      </if>
+      <if test="siteAddress != null" >
+        site_address,
+      </if>
+      <if test="siteFormed != null" >
+        site_formed,
+      </if>
+      <if test="siteLawperson != null" >
+        site_lawperson,
+      </if>
+      <if test="siteLawphone != null" >
+        site_lawphone,
+      </if>
+      <if test="siteLawemail != null" >
+        site_lawemail,
+      </if>
+      <if test="siteLinkname != null" >
+        site_linkname,
+      </if>
+      <if test="siteLinkphone != null" >
+        site_linkphone,
+      </if>
+      <if test="siteLinkfax != null" >
+        site_linkfax,
+      </if>
+      <if test="siteLinkemail != null" >
+        site_linkemail,
+      </if>
+      <if test="siteLastsale != null" >
+        site_lastsale,
+      </if>
+      <if test="siteLastratal != null" >
+        site_lastratal,
+      </if>
+      <if test="siteCapital != null" >
+        site_capital,
+      </if>
+      <if test="siteYtdsale != null" >
+        site_ytdsale,
+      </if>
+      <if test="siteYtdratal != null" >
+        site_ytdratal,
+      </if>
+      <if test="siteHeadcount != null" >
+        site_headcount,
+      </if>
+      <if test="siteDrma != null" >
+        site_drma,
+      </if>
+      <if test="siteUndergraduate != null" >
+        site_undergraduate,
+      </if>
+      <if test="siteBasecase != null" >
+        site_basecase,
+      </if>
+      <if test="siteBusinesscase != null" >
+        site_businesscase,
+      </if>
+      <if test="siteExplain != null" >
+        site_explain,
+      </if>
+      <if test="siteCheck != null" >
+        site_check,
+      </if>
+      <if test="siteCreate != null" >
+        site_create,
+      </if>
+      <if test="siteUpdate != null" >
+        site_update,
+      </if>
+      <if test="frontId != null" >
+        front_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="siteId != null" >
+        #{siteId,jdbcType=INTEGER},
+      </if>
+      <if test="siteCompany != null" >
+        #{siteCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="siteGarden != null" >
+        #{siteGarden,jdbcType=VARCHAR},
+      </if>
+      <if test="siteNumber != null" >
+        #{siteNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="siteArea != null" >
+        #{siteArea,jdbcType=DOUBLE},
+      </if>
+      <if test="siteDate != null" >
+        #{siteDate,jdbcType=DATE},
+      </if>
+      <if test="siteApplyarea != null" >
+        #{siteApplyarea,jdbcType=DOUBLE},
+      </if>
+      <if test="siteProduct != null" >
+        #{siteProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="indId != null" >
+        #{indId,jdbcType=BIGINT},
+      </if>
+      <if test="siteIp != null" >
+        #{siteIp,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddress != null" >
+        #{siteAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="siteFormed != null" >
+        #{siteFormed,jdbcType=DATE},
+      </if>
+      <if test="siteLawperson != null" >
+        #{siteLawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLawphone != null" >
+        #{siteLawphone,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLawemail != null" >
+        #{siteLawemail,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkname != null" >
+        #{siteLinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkphone != null" >
+        #{siteLinkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkfax != null" >
+        #{siteLinkfax,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkemail != null" >
+        #{siteLinkemail,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLastsale != null" >
+        #{siteLastsale,jdbcType=DOUBLE},
+      </if>
+      <if test="siteLastratal != null" >
+        #{siteLastratal,jdbcType=DOUBLE},
+      </if>
+      <if test="siteCapital != null" >
+        #{siteCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="siteYtdsale != null" >
+        #{siteYtdsale,jdbcType=DOUBLE},
+      </if>
+      <if test="siteYtdratal != null" >
+        #{siteYtdratal,jdbcType=DOUBLE},
+      </if>
+      <if test="siteHeadcount != null" >
+        #{siteHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="siteDrma != null" >
+        #{siteDrma,jdbcType=INTEGER},
+      </if>
+      <if test="siteUndergraduate != null" >
+        #{siteUndergraduate,jdbcType=INTEGER},
+      </if>
+      <if test="siteBasecase != null" >
+        #{siteBasecase,jdbcType=VARCHAR},
+      </if>
+      <if test="siteBusinesscase != null" >
+        #{siteBusinesscase,jdbcType=VARCHAR},
+      </if>
+      <if test="siteExplain != null" >
+        #{siteExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="siteCheck != null" >
+        #{siteCheck,jdbcType=INTEGER},
+      </if>
+      <if test="siteCreate != null" >
+        #{siteCreate,jdbcType=DATE},
+      </if>
+      <if test="siteUpdate != null" >
+        #{siteUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        #{frontId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.SiteChangesExample" resultType="java.lang.Integer" >
+    select count(*) from site_changes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update site_changes
+    <set >
+      <if test="record.siteId != null" >
+        site_id = #{record.siteId,jdbcType=INTEGER},
+      </if>
+      <if test="record.siteCompany != null" >
+        site_company = #{record.siteCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteGarden != null" >
+        site_garden = #{record.siteGarden,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteNumber != null" >
+        site_number = #{record.siteNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteArea != null" >
+        site_area = #{record.siteArea,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteDate != null" >
+        site_date = #{record.siteDate,jdbcType=DATE},
+      </if>
+      <if test="record.siteApplyarea != null" >
+        site_applyarea = #{record.siteApplyarea,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteProduct != null" >
+        site_product = #{record.siteProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indId != null" >
+        ind_id = #{record.indId,jdbcType=BIGINT},
+      </if>
+      <if test="record.siteIp != null" >
+        site_ip = #{record.siteIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteAddress != null" >
+        site_address = #{record.siteAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteFormed != null" >
+        site_formed = #{record.siteFormed,jdbcType=DATE},
+      </if>
+      <if test="record.siteLawperson != null" >
+        site_lawperson = #{record.siteLawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLawphone != null" >
+        site_lawphone = #{record.siteLawphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLawemail != null" >
+        site_lawemail = #{record.siteLawemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLinkname != null" >
+        site_linkname = #{record.siteLinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLinkphone != null" >
+        site_linkphone = #{record.siteLinkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLinkfax != null" >
+        site_linkfax = #{record.siteLinkfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLinkemail != null" >
+        site_linkemail = #{record.siteLinkemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteLastsale != null" >
+        site_lastsale = #{record.siteLastsale,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteLastratal != null" >
+        site_lastratal = #{record.siteLastratal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteCapital != null" >
+        site_capital = #{record.siteCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteYtdsale != null" >
+        site_ytdsale = #{record.siteYtdsale,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteYtdratal != null" >
+        site_ytdratal = #{record.siteYtdratal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.siteHeadcount != null" >
+        site_headcount = #{record.siteHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.siteDrma != null" >
+        site_drma = #{record.siteDrma,jdbcType=INTEGER},
+      </if>
+      <if test="record.siteUndergraduate != null" >
+        site_undergraduate = #{record.siteUndergraduate,jdbcType=INTEGER},
+      </if>
+      <if test="record.siteBasecase != null" >
+        site_basecase = #{record.siteBasecase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteBusinesscase != null" >
+        site_businesscase = #{record.siteBusinesscase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteExplain != null" >
+        site_explain = #{record.siteExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="record.siteCheck != null" >
+        site_check = #{record.siteCheck,jdbcType=INTEGER},
+      </if>
+      <if test="record.siteCreate != null" >
+        site_create = #{record.siteCreate,jdbcType=DATE},
+      </if>
+      <if test="record.siteUpdate != null" >
+        site_update = #{record.siteUpdate,jdbcType=DATE},
+      </if>
+      <if test="record.frontId != null" >
+        front_id = #{record.frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update site_changes
+    set site_id = #{record.siteId,jdbcType=INTEGER},
+      site_company = #{record.siteCompany,jdbcType=VARCHAR},
+      site_garden = #{record.siteGarden,jdbcType=VARCHAR},
+      site_number = #{record.siteNumber,jdbcType=VARCHAR},
+      site_area = #{record.siteArea,jdbcType=DOUBLE},
+      site_date = #{record.siteDate,jdbcType=DATE},
+      site_applyarea = #{record.siteApplyarea,jdbcType=DOUBLE},
+      site_product = #{record.siteProduct,jdbcType=VARCHAR},
+      ind_id = #{record.indId,jdbcType=BIGINT},
+      site_ip = #{record.siteIp,jdbcType=VARCHAR},
+      site_address = #{record.siteAddress,jdbcType=VARCHAR},
+      site_formed = #{record.siteFormed,jdbcType=DATE},
+      site_lawperson = #{record.siteLawperson,jdbcType=VARCHAR},
+      site_lawphone = #{record.siteLawphone,jdbcType=VARCHAR},
+      site_lawemail = #{record.siteLawemail,jdbcType=VARCHAR},
+      site_linkname = #{record.siteLinkname,jdbcType=VARCHAR},
+      site_linkphone = #{record.siteLinkphone,jdbcType=VARCHAR},
+      site_linkfax = #{record.siteLinkfax,jdbcType=VARCHAR},
+      site_linkemail = #{record.siteLinkemail,jdbcType=VARCHAR},
+      site_lastsale = #{record.siteLastsale,jdbcType=DOUBLE},
+      site_lastratal = #{record.siteLastratal,jdbcType=DOUBLE},
+      site_capital = #{record.siteCapital,jdbcType=DOUBLE},
+      site_ytdsale = #{record.siteYtdsale,jdbcType=DOUBLE},
+      site_ytdratal = #{record.siteYtdratal,jdbcType=DOUBLE},
+      site_headcount = #{record.siteHeadcount,jdbcType=INTEGER},
+      site_drma = #{record.siteDrma,jdbcType=INTEGER},
+      site_undergraduate = #{record.siteUndergraduate,jdbcType=INTEGER},
+      site_basecase = #{record.siteBasecase,jdbcType=VARCHAR},
+      site_businesscase = #{record.siteBusinesscase,jdbcType=VARCHAR},
+      site_explain = #{record.siteExplain,jdbcType=VARCHAR},
+      site_check = #{record.siteCheck,jdbcType=INTEGER},
+      site_create = #{record.siteCreate,jdbcType=DATE},
+      site_update = #{record.siteUpdate,jdbcType=DATE},
+      front_id = #{record.frontId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.SiteChanges" >
+    update site_changes
+    <set >
+      <if test="siteCompany != null" >
+        site_company = #{siteCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="siteGarden != null" >
+        site_garden = #{siteGarden,jdbcType=VARCHAR},
+      </if>
+      <if test="siteNumber != null" >
+        site_number = #{siteNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="siteArea != null" >
+        site_area = #{siteArea,jdbcType=DOUBLE},
+      </if>
+      <if test="siteDate != null" >
+        site_date = #{siteDate,jdbcType=DATE},
+      </if>
+      <if test="siteApplyarea != null" >
+        site_applyarea = #{siteApplyarea,jdbcType=DOUBLE},
+      </if>
+      <if test="siteProduct != null" >
+        site_product = #{siteProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="indId != null" >
+        ind_id = #{indId,jdbcType=BIGINT},
+      </if>
+      <if test="siteIp != null" >
+        site_ip = #{siteIp,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddress != null" >
+        site_address = #{siteAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="siteFormed != null" >
+        site_formed = #{siteFormed,jdbcType=DATE},
+      </if>
+      <if test="siteLawperson != null" >
+        site_lawperson = #{siteLawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLawphone != null" >
+        site_lawphone = #{siteLawphone,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLawemail != null" >
+        site_lawemail = #{siteLawemail,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkname != null" >
+        site_linkname = #{siteLinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkphone != null" >
+        site_linkphone = #{siteLinkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkfax != null" >
+        site_linkfax = #{siteLinkfax,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLinkemail != null" >
+        site_linkemail = #{siteLinkemail,jdbcType=VARCHAR},
+      </if>
+      <if test="siteLastsale != null" >
+        site_lastsale = #{siteLastsale,jdbcType=DOUBLE},
+      </if>
+      <if test="siteLastratal != null" >
+        site_lastratal = #{siteLastratal,jdbcType=DOUBLE},
+      </if>
+      <if test="siteCapital != null" >
+        site_capital = #{siteCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="siteYtdsale != null" >
+        site_ytdsale = #{siteYtdsale,jdbcType=DOUBLE},
+      </if>
+      <if test="siteYtdratal != null" >
+        site_ytdratal = #{siteYtdratal,jdbcType=DOUBLE},
+      </if>
+      <if test="siteHeadcount != null" >
+        site_headcount = #{siteHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="siteDrma != null" >
+        site_drma = #{siteDrma,jdbcType=INTEGER},
+      </if>
+      <if test="siteUndergraduate != null" >
+        site_undergraduate = #{siteUndergraduate,jdbcType=INTEGER},
+      </if>
+      <if test="siteBasecase != null" >
+        site_basecase = #{siteBasecase,jdbcType=VARCHAR},
+      </if>
+      <if test="siteBusinesscase != null" >
+        site_businesscase = #{siteBusinesscase,jdbcType=VARCHAR},
+      </if>
+      <if test="siteExplain != null" >
+        site_explain = #{siteExplain,jdbcType=VARCHAR},
+      </if>
+      <if test="siteCheck != null" >
+        site_check = #{siteCheck,jdbcType=INTEGER},
+      </if>
+      <if test="siteCreate != null" >
+        site_create = #{siteCreate,jdbcType=DATE},
+      </if>
+      <if test="siteUpdate != null" >
+        site_update = #{siteUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        front_id = #{frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where site_id = #{siteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.SiteChanges" >
+    update site_changes
+    set site_company = #{siteCompany,jdbcType=VARCHAR},
+      site_garden = #{siteGarden,jdbcType=VARCHAR},
+      site_number = #{siteNumber,jdbcType=VARCHAR},
+      site_area = #{siteArea,jdbcType=DOUBLE},
+      site_date = #{siteDate,jdbcType=DATE},
+      site_applyarea = #{siteApplyarea,jdbcType=DOUBLE},
+      site_product = #{siteProduct,jdbcType=VARCHAR},
+      ind_id = #{indId,jdbcType=BIGINT},
+      site_ip = #{siteIp,jdbcType=VARCHAR},
+      site_address = #{siteAddress,jdbcType=VARCHAR},
+      site_formed = #{siteFormed,jdbcType=DATE},
+      site_lawperson = #{siteLawperson,jdbcType=VARCHAR},
+      site_lawphone = #{siteLawphone,jdbcType=VARCHAR},
+      site_lawemail = #{siteLawemail,jdbcType=VARCHAR},
+      site_linkname = #{siteLinkname,jdbcType=VARCHAR},
+      site_linkphone = #{siteLinkphone,jdbcType=VARCHAR},
+      site_linkfax = #{siteLinkfax,jdbcType=VARCHAR},
+      site_linkemail = #{siteLinkemail,jdbcType=VARCHAR},
+      site_lastsale = #{siteLastsale,jdbcType=DOUBLE},
+      site_lastratal = #{siteLastratal,jdbcType=DOUBLE},
+      site_capital = #{siteCapital,jdbcType=DOUBLE},
+      site_ytdsale = #{siteYtdsale,jdbcType=DOUBLE},
+      site_ytdratal = #{siteYtdratal,jdbcType=DOUBLE},
+      site_headcount = #{siteHeadcount,jdbcType=INTEGER},
+      site_drma = #{siteDrma,jdbcType=INTEGER},
+      site_undergraduate = #{siteUndergraduate,jdbcType=INTEGER},
+      site_basecase = #{siteBasecase,jdbcType=VARCHAR},
+      site_businesscase = #{siteBusinesscase,jdbcType=VARCHAR},
+      site_explain = #{siteExplain,jdbcType=VARCHAR},
+      site_check = #{siteCheck,jdbcType=INTEGER},
+      site_create = #{siteCreate,jdbcType=DATE},
+      site_update = #{siteUpdate,jdbcType=DATE},
+      front_id = #{frontId,jdbcType=BIGINT}
+    where site_id = #{siteId,jdbcType=INTEGER}
+  </update>
+</mapper>

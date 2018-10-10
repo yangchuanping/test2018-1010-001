@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.ProLeaseholdsMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.ProLeaseholds" >
+    <id column="lea_id" property="leaId" jdbcType="BIGINT" />
+    <result column="pro_id" property="proId" jdbcType="BIGINT" />
+    <result column="com_id" property="comId" jdbcType="BIGINT" />
+    <result column="time_start" property="timeStart" jdbcType="INTEGER" />
+    <result column="time_end" property="timeEnd" jdbcType="INTEGER" />
+    <result column="lea_status" property="leaStatus" jdbcType="CHAR" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="entrepreneurialcenter.office.pojo.ProLeaseholds" extends="BaseResultMap" >
+    <result column="lea_detail" property="leaDetail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    lea_id, pro_id, com_id, time_start, time_end, lea_status, updated, created
+  </sql>
+  <sql id="Blob_Column_List" >
+    lea_detail
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholdsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pro_leaseholds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholdsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pro_leaseholds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from pro_leaseholds
+    where lea_id = #{leaId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pro_leaseholds
+    where lea_id = #{leaId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholdsExample" >
+    delete from pro_leaseholds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholds" >
+    insert into pro_leaseholds (lea_id, pro_id, com_id, 
+      time_start, time_end, lea_status, 
+      updated, created, lea_detail
+      )
+    values (#{leaId,jdbcType=BIGINT}, #{proId,jdbcType=BIGINT}, #{comId,jdbcType=BIGINT}, 
+      #{timeStart,jdbcType=INTEGER}, #{timeEnd,jdbcType=INTEGER}, #{leaStatus,jdbcType=CHAR}, 
+      #{updated,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, #{leaDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholds" >
+    insert into pro_leaseholds
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="leaId != null" >
+        lea_id,
+      </if>
+      <if test="proId != null" >
+        pro_id,
+      </if>
+      <if test="comId != null" >
+        com_id,
+      </if>
+      <if test="timeStart != null" >
+        time_start,
+      </if>
+      <if test="timeEnd != null" >
+        time_end,
+      </if>
+      <if test="leaStatus != null" >
+        lea_status,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="leaDetail != null" >
+        lea_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="leaId != null" >
+        #{leaId,jdbcType=BIGINT},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=BIGINT},
+      </if>
+      <if test="comId != null" >
+        #{comId,jdbcType=BIGINT},
+      </if>
+      <if test="timeStart != null" >
+        #{timeStart,jdbcType=INTEGER},
+      </if>
+      <if test="timeEnd != null" >
+        #{timeEnd,jdbcType=INTEGER},
+      </if>
+      <if test="leaStatus != null" >
+        #{leaStatus,jdbcType=CHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="leaDetail != null" >
+        #{leaDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholdsExample" resultType="java.lang.Integer" >
+    select count(*) from pro_leaseholds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pro_leaseholds
+    <set >
+      <if test="record.leaId != null" >
+        lea_id = #{record.leaId,jdbcType=BIGINT},
+      </if>
+      <if test="record.proId != null" >
+        pro_id = #{record.proId,jdbcType=BIGINT},
+      </if>
+      <if test="record.comId != null" >
+        com_id = #{record.comId,jdbcType=BIGINT},
+      </if>
+      <if test="record.timeStart != null" >
+        time_start = #{record.timeStart,jdbcType=INTEGER},
+      </if>
+      <if test="record.timeEnd != null" >
+        time_end = #{record.timeEnd,jdbcType=INTEGER},
+      </if>
+      <if test="record.leaStatus != null" >
+        lea_status = #{record.leaStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=INTEGER},
+      </if>
+      <if test="record.leaDetail != null" >
+        lea_detail = #{record.leaDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update pro_leaseholds
+    set lea_id = #{record.leaId,jdbcType=BIGINT},
+      pro_id = #{record.proId,jdbcType=BIGINT},
+      com_id = #{record.comId,jdbcType=BIGINT},
+      time_start = #{record.timeStart,jdbcType=INTEGER},
+      time_end = #{record.timeEnd,jdbcType=INTEGER},
+      lea_status = #{record.leaStatus,jdbcType=CHAR},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER},
+      lea_detail = #{record.leaDetail,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pro_leaseholds
+    set lea_id = #{record.leaId,jdbcType=BIGINT},
+      pro_id = #{record.proId,jdbcType=BIGINT},
+      com_id = #{record.comId,jdbcType=BIGINT},
+      time_start = #{record.timeStart,jdbcType=INTEGER},
+      time_end = #{record.timeEnd,jdbcType=INTEGER},
+      lea_status = #{record.leaStatus,jdbcType=CHAR},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholds" >
+    update pro_leaseholds
+    <set >
+      <if test="proId != null" >
+        pro_id = #{proId,jdbcType=BIGINT},
+      </if>
+      <if test="comId != null" >
+        com_id = #{comId,jdbcType=BIGINT},
+      </if>
+      <if test="timeStart != null" >
+        time_start = #{timeStart,jdbcType=INTEGER},
+      </if>
+      <if test="timeEnd != null" >
+        time_end = #{timeEnd,jdbcType=INTEGER},
+      </if>
+      <if test="leaStatus != null" >
+        lea_status = #{leaStatus,jdbcType=CHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="leaDetail != null" >
+        lea_detail = #{leaDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where lea_id = #{leaId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholds" >
+    update pro_leaseholds
+    set pro_id = #{proId,jdbcType=BIGINT},
+      com_id = #{comId,jdbcType=BIGINT},
+      time_start = #{timeStart,jdbcType=INTEGER},
+      time_end = #{timeEnd,jdbcType=INTEGER},
+      lea_status = #{leaStatus,jdbcType=CHAR},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      lea_detail = #{leaDetail,jdbcType=LONGVARCHAR}
+    where lea_id = #{leaId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.ProLeaseholds" >
+    update pro_leaseholds
+    set pro_id = #{proId,jdbcType=BIGINT},
+      com_id = #{comId,jdbcType=BIGINT},
+      time_start = #{timeStart,jdbcType=INTEGER},
+      time_end = #{timeEnd,jdbcType=INTEGER},
+      lea_status = #{leaStatus,jdbcType=CHAR},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER}
+    where lea_id = #{leaId,jdbcType=BIGINT}
+  </update>
+</mapper>

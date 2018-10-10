@@ -1,0 +1,231 @@
+body{
+	background-color: #F2F2F2;
+}
+.content{
+	width: 100%;
+}
+.top-img{
+	width: 100%;
+}
+.top-img img{
+	width: 100%;
+}
+.news-obox{
+	width: 65%;
+	margin: 40px auto 0;
+	overflow: hidden;
+}
+.navig{
+	font-size: 14px;
+	color: #6F6F6F;
+	margin-bottom: 30px;
+}
+.left-box{
+	width: 18%;
+	height: 192px;
+	float: left;
+}
+.right-box{
+	width: 80%;
+	background-color: white;
+	float: right;
+	box-sizing: border-box;
+	padding: 25px 20px;
+	margin-bottom: 40px;
+}
+.left-box ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.left-box li{
+	width: 100%;
+	height: 64px;
+}
+.left-box li:nth-child(2){
+	border-top: 1px solid #EFEFEF;
+	border-bottom: 1px solid #EFEFEF;
+}
+.left-box a{
+	display: inline-block;
+	width: 100%;
+	height: 64px;
+	line-height: 64px;
+	text-align: center;
+	font-size: 20px;
+	color: #4CB4FB;
+	background-color: white;
+	text-decoration: none;
+}
+.left-box a:hover{
+	background-color: #4CB4FB;
+	color: white;
+}
+.r-Top-name{
+	width: 100%;
+	border-bottom: 1px solid #E3E3E3;
+}
+.r-Top-name span{
+	display: inline-block;
+	font-size: 16px;
+	color: #666666;
+	border-bottom: 2px solid #4CB4FB;
+	padding-bottom: 10px;
+}
+.top-msg{
+	width: 100%;
+	height: 250px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+.left-img{
+	width: 40%;
+	height: 250px;
+	float:left;
+}
+.left-img img{
+	width: 100%;
+	height: 250px;
+}
+.right-txt{
+	width: 58%;
+	height: 250px;
+	float: right;
+}
+.right-txt a{
+	text-decoration: none;
+}
+.right-txt span{
+	display: inline-block;
+	width: 100%;
+	font-size: 25px;
+	color: #666666;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.right-txt p{
+	display: inline-block;
+	height: 140px;
+	line-height: 28px;
+	font-size: 16px;
+	color: #8C8C8C;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	overflow: hidden;
+	/*position: relative;*/
+}
+/*.right-txt p::after{
+	content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+    background:url(http://lidada.org/wp-content/uploads/2017/11/overflow_bg.png) repeat-y;
+}*/
+.right-txt p:hover{
+	color: #666666;
+}
+.d-clock{
+	width: 100%;
+}
+.d-clock img{
+	width: 20px;
+	margin-right: 10px;
+	float: left;
+}
+.d-clock i{
+	font-style: normal;
+	font-size: 16px;
+	color: #8C8C8C;	
+}
+.list-msg{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px;
+}
+.list-msg ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.list-msg li{
+	width: 100%;
+	padding: 3px;
+	border-bottom: 1px dashed #E8E8E8;
+}
+.list-msg p{
+	display: inline-block;
+	width: 70%;
+	font-size: 14px;
+	color: #666666;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	margin: 10px 0;
+}
+.list-msg p:hover{
+	color: #007AFF;
+}
+.list-msg i{
+	font-style: normal;
+	float: right;
+	margin-top: 12px;
+	font-size: 12px;
+	color: #666666;
+}
+.active2{
+	background-color: #4CB4FB !important;
+	color: white !important;
+}
+.div2,.div3{
+	display: none;
+}
+
+
+/*移动设备*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+.news-obox{
+	width: 100%;
+	margin: 0;
+}
+.navig {
+	margin: 10px 20px !important;
+}
+.left-box{
+	width: 100%;
+	height: auto;
+}
+.left-box li{
+	width: 33%;
+	float: left;
+}
+.right-box{
+	width: 100%;
+}
+.list-msg{
+	padding: 15px 0;
+}
+.top-msg{
+	height: auto;
+}
+.left-img{
+	width: 100%;
+	height: auto;
+}
+.left-img img{
+	height: auto;
+}
+.right-txt{
+	width: 100%;
+}
+.right-txt span{
+	font-size: 22px;
+}
+.right-txt p{
+	font-size: 14px;
+	margin: 10px 0;
+}
+}

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.AttractMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.Attract" >
+    <id column="attract_id" property="attractId" jdbcType="INTEGER" />
+    <result column="attract_name" property="attractName" jdbcType="VARCHAR" />
+    <result column="attract_content" property="attractContent" jdbcType="VARCHAR" />
+    <result column="attract_address" property="attractAddress" jdbcType="VARCHAR" />
+    <result column="attract_traffic" property="attractTraffic" jdbcType="VARCHAR" />
+    <result column="attract_garden" property="attractGarden" jdbcType="VARCHAR" />
+    <result column="attract_area" property="attractArea" jdbcType="INTEGER" />
+    <result column="attract_station" property="attractStation" jdbcType="VARCHAR" />
+    <result column="attract_decoration" property="attractDecoration" jdbcType="VARCHAR" />
+    <result column="attract_rate" property="attractRate" jdbcType="VARCHAR" />
+    <result column="attract_rentfree" property="attractRentfree" jdbcType="VARCHAR" />
+    <result column="attract_phone" property="attractPhone" jdbcType="VARCHAR" />
+    <result column="attract_img" property="attractImg" jdbcType="VARCHAR" />
+    <result column="attract_elevator" property="attractElevator" jdbcType="CHAR" />
+    <result column="attract_status" property="attractStatus" jdbcType="CHAR" />
+    <result column="attract_created" property="attractCreated" jdbcType="DATE" />
+    <result column="attract_updated" property="attractUpdated" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    attract_id, attract_name, attract_content, attract_address, attract_traffic, attract_garden, 
+    attract_area, attract_station, attract_decoration, attract_rate, attract_rentfree, 
+    attract_phone, attract_img, attract_elevator, attract_status, attract_created, attract_updated
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.AttractExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from attract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from attract
+    where attract_id = #{attractId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from attract
+    where attract_id = #{attractId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.AttractExample" >
+    delete from attract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.Attract" >
+    insert into attract (attract_id, attract_name, attract_content, 
+      attract_address, attract_traffic, attract_garden, 
+      attract_area, attract_station, attract_decoration, 
+      attract_rate, attract_rentfree, attract_phone, 
+      attract_img, attract_elevator, attract_status, 
+      attract_created, attract_updated)
+    values (#{attractId,jdbcType=INTEGER}, #{attractName,jdbcType=VARCHAR}, #{attractContent,jdbcType=VARCHAR}, 
+      #{attractAddress,jdbcType=VARCHAR}, #{attractTraffic,jdbcType=VARCHAR}, #{attractGarden,jdbcType=VARCHAR}, 
+      #{attractArea,jdbcType=INTEGER}, #{attractStation,jdbcType=VARCHAR}, #{attractDecoration,jdbcType=VARCHAR}, 
+      #{attractRate,jdbcType=VARCHAR}, #{attractRentfree,jdbcType=VARCHAR}, #{attractPhone,jdbcType=VARCHAR}, 
+      #{attractImg,jdbcType=VARCHAR}, #{attractElevator,jdbcType=CHAR}, #{attractStatus,jdbcType=CHAR}, 
+      #{attractCreated,jdbcType=DATE}, #{attractUpdated,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.Attract" >
+    insert into attract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attractId != null" >
+        attract_id,
+      </if>
+      <if test="attractName != null" >
+        attract_name,
+      </if>
+      <if test="attractContent != null" >
+        attract_content,
+      </if>
+      <if test="attractAddress != null" >
+        attract_address,
+      </if>
+      <if test="attractTraffic != null" >
+        attract_traffic,
+      </if>
+      <if test="attractGarden != null" >
+        attract_garden,
+      </if>
+      <if test="attractArea != null" >
+        attract_area,
+      </if>
+      <if test="attractStation != null" >
+        attract_station,
+      </if>
+      <if test="attractDecoration != null" >
+        attract_decoration,
+      </if>
+      <if test="attractRate != null" >
+        attract_rate,
+      </if>
+      <if test="attractRentfree != null" >
+        attract_rentfree,
+      </if>
+      <if test="attractPhone != null" >
+        attract_phone,
+      </if>
+      <if test="attractImg != null" >
+        attract_img,
+      </if>
+      <if test="attractElevator != null" >
+        attract_elevator,
+      </if>
+      <if test="attractStatus != null" >
+        attract_status,
+      </if>
+      <if test="attractCreated != null" >
+        attract_created,
+      </if>
+      <if test="attractUpdated != null" >
+        attract_updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attractId != null" >
+        #{attractId,jdbcType=INTEGER},
+      </if>
+      <if test="attractName != null" >
+        #{attractName,jdbcType=VARCHAR},
+      </if>
+      <if test="attractContent != null" >
+        #{attractContent,jdbcType=VARCHAR},
+      </if>
+      <if test="attractAddress != null" >
+        #{attractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="attractTraffic != null" >
+        #{attractTraffic,jdbcType=VARCHAR},
+      </if>
+      <if test="attractGarden != null" >
+        #{attractGarden,jdbcType=VARCHAR},
+      </if>
+      <if test="attractArea != null" >
+        #{attractArea,jdbcType=INTEGER},
+      </if>
+      <if test="attractStation != null" >
+        #{attractStation,jdbcType=VARCHAR},
+      </if>
+      <if test="attractDecoration != null" >
+        #{attractDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="attractRate != null" >
+        #{attractRate,jdbcType=VARCHAR},
+      </if>
+      <if test="attractRentfree != null" >
+        #{attractRentfree,jdbcType=VARCHAR},
+      </if>
+      <if test="attractPhone != null" >
+        #{attractPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="attractImg != null" >
+        #{attractImg,jdbcType=VARCHAR},
+      </if>
+      <if test="attractElevator != null" >
+        #{attractElevator,jdbcType=CHAR},
+      </if>
+      <if test="attractStatus != null" >
+        #{attractStatus,jdbcType=CHAR},
+      </if>
+      <if test="attractCreated != null" >
+        #{attractCreated,jdbcType=DATE},
+      </if>
+      <if test="attractUpdated != null" >
+        #{attractUpdated,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.AttractExample" resultType="java.lang.Integer" >
+    select count(*) from attract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update attract
+    <set >
+      <if test="record.attractId != null" >
+        attract_id = #{record.attractId,jdbcType=INTEGER},
+      </if>
+      <if test="record.attractName != null" >
+        attract_name = #{record.attractName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractContent != null" >
+        attract_content = #{record.attractContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractAddress != null" >
+        attract_address = #{record.attractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractTraffic != null" >
+        attract_traffic = #{record.attractTraffic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractGarden != null" >
+        attract_garden = #{record.attractGarden,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractArea != null" >
+        attract_area = #{record.attractArea,jdbcType=INTEGER},
+      </if>
+      <if test="record.attractStation != null" >
+        attract_station = #{record.attractStation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractDecoration != null" >
+        attract_decoration = #{record.attractDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractRate != null" >
+        attract_rate = #{record.attractRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractRentfree != null" >
+        attract_rentfree = #{record.attractRentfree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractPhone != null" >
+        attract_phone = #{record.attractPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractImg != null" >
+        attract_img = #{record.attractImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attractElevator != null" >
+        attract_elevator = #{record.attractElevator,jdbcType=CHAR},
+      </if>
+      <if test="record.attractStatus != null" >
+        attract_status = #{record.attractStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.attractCreated != null" >
+        attract_created = #{record.attractCreated,jdbcType=DATE},
+      </if>
+      <if test="record.attractUpdated != null" >
+        attract_updated = #{record.attractUpdated,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update attract
+    set attract_id = #{record.attractId,jdbcType=INTEGER},
+      attract_name = #{record.attractName,jdbcType=VARCHAR},
+      attract_content = #{record.attractContent,jdbcType=VARCHAR},
+      attract_address = #{record.attractAddress,jdbcType=VARCHAR},
+      attract_traffic = #{record.attractTraffic,jdbcType=VARCHAR},
+      attract_garden = #{record.attractGarden,jdbcType=VARCHAR},
+      attract_area = #{record.attractArea,jdbcType=INTEGER},
+      attract_station = #{record.attractStation,jdbcType=VARCHAR},
+      attract_decoration = #{record.attractDecoration,jdbcType=VARCHAR},
+      attract_rate = #{record.attractRate,jdbcType=VARCHAR},
+      attract_rentfree = #{record.attractRentfree,jdbcType=VARCHAR},
+      attract_phone = #{record.attractPhone,jdbcType=VARCHAR},
+      attract_img = #{record.attractImg,jdbcType=VARCHAR},
+      attract_elevator = #{record.attractElevator,jdbcType=CHAR},
+      attract_status = #{record.attractStatus,jdbcType=CHAR},
+      attract_created = #{record.attractCreated,jdbcType=DATE},
+      attract_updated = #{record.attractUpdated,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.Attract" >
+    update attract
+    <set >
+      <if test="attractName != null" >
+        attract_name = #{attractName,jdbcType=VARCHAR},
+      </if>
+      <if test="attractContent != null" >
+        attract_content = #{attractContent,jdbcType=VARCHAR},
+      </if>
+      <if test="attractAddress != null" >
+        attract_address = #{attractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="attractTraffic != null" >
+        attract_traffic = #{attractTraffic,jdbcType=VARCHAR},
+      </if>
+      <if test="attractGarden != null" >
+        attract_garden = #{attractGarden,jdbcType=VARCHAR},
+      </if>
+      <if test="attractArea != null" >
+        attract_area = #{attractArea,jdbcType=INTEGER},
+      </if>
+      <if test="attractStation != null" >
+        attract_station = #{attractStation,jdbcType=VARCHAR},
+      </if>
+      <if test="attractDecoration != null" >
+        attract_decoration = #{attractDecoration,jdbcType=VARCHAR},
+      </if>
+      <if test="attractRate != null" >
+        attract_rate = #{attractRate,jdbcType=VARCHAR},
+      </if>
+      <if test="attractRentfree != null" >
+        attract_rentfree = #{attractRentfree,jdbcType=VARCHAR},
+      </if>
+      <if test="attractPhone != null" >
+        attract_phone = #{attractPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="attractImg != null" >
+        attract_img = #{attractImg,jdbcType=VARCHAR},
+      </if>
+      <if test="attractElevator != null" >
+        attract_elevator = #{attractElevator,jdbcType=CHAR},
+      </if>
+      <if test="attractStatus != null" >
+        attract_status = #{attractStatus,jdbcType=CHAR},
+      </if>
+      <if test="attractCreated != null" >
+        attract_created = #{attractCreated,jdbcType=DATE},
+      </if>
+      <if test="attractUpdated != null" >
+        attract_updated = #{attractUpdated,jdbcType=DATE},
+      </if>
+    </set>
+    where attract_id = #{attractId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.Attract" >
+    update attract
+    set attract_name = #{attractName,jdbcType=VARCHAR},
+      attract_content = #{attractContent,jdbcType=VARCHAR},
+      attract_address = #{attractAddress,jdbcType=VARCHAR},
+      attract_traffic = #{attractTraffic,jdbcType=VARCHAR},
+      attract_garden = #{attractGarden,jdbcType=VARCHAR},
+      attract_area = #{attractArea,jdbcType=INTEGER},
+      attract_station = #{attractStation,jdbcType=VARCHAR},
+      attract_decoration = #{attractDecoration,jdbcType=VARCHAR},
+      attract_rate = #{attractRate,jdbcType=VARCHAR},
+      attract_rentfree = #{attractRentfree,jdbcType=VARCHAR},
+      attract_phone = #{attractPhone,jdbcType=VARCHAR},
+      attract_img = #{attractImg,jdbcType=VARCHAR},
+      attract_elevator = #{attractElevator,jdbcType=CHAR},
+      attract_status = #{attractStatus,jdbcType=CHAR},
+      attract_created = #{attractCreated,jdbcType=DATE},
+      attract_updated = #{attractUpdated,jdbcType=DATE}
+    where attract_id = #{attractId,jdbcType=INTEGER}
+  </update>
+</mapper>

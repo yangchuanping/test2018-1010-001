@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.GardenApplyMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.GardenApply" >
+    <id column="garden_id" property="gardenId" jdbcType="INTEGER" />
+    <result column="garden_company" property="gardenCompany" jdbcType="VARCHAR" />
+    <result column="garden_registration" property="gardenRegistration" jdbcType="VARCHAR" />
+    <result column="garden_date" property="gardenDate" jdbcType="DATE" />
+    <result column="garden_area" property="gardenArea" jdbcType="DOUBLE" />
+    <result column="ind_id" property="indId" jdbcType="BIGINT" />
+    <result column="garden_products" property="gardenProducts" jdbcType="VARCHAR" />
+    <result column="garden_iacr" property="gardenIacr" jdbcType="INTEGER" />
+    <result column="garden_lawperson" property="gardenLawperson" jdbcType="VARCHAR" />
+    <result column="garden_lawphone" property="gardenLawphone" jdbcType="VARCHAR" />
+    <result column="garden_capital" property="gardenCapital" jdbcType="DOUBLE" />
+    <result column="garden_address" property="gardenAddress" jdbcType="VARCHAR" />
+    <result column="garden_regtime" property="gardenRegtime" jdbcType="DATE" />
+    <result column="garden_sale" property="gardenSale" jdbcType="DOUBLE" />
+    <result column="garden_ratal" property="gardenRatal" jdbcType="DOUBLE" />
+    <result column="garden_ip" property="gardenIp" jdbcType="VARCHAR" />
+    <result column="garden_linkname" property="gardenLinkname" jdbcType="VARCHAR" />
+    <result column="garden_linkphone" property="gardenLinkphone" jdbcType="VARCHAR" />
+    <result column="garden_linkfax" property="gardenLinkfax" jdbcType="VARCHAR" />
+    <result column="garden_linkemail" property="gardenLinkemail" jdbcType="VARCHAR" />
+    <result column="garden_headcount" property="gardenHeadcount" jdbcType="INTEGER" />
+    <result column="garden_partner" property="gardenPartner" jdbcType="VARCHAR" />
+    <result column="garden_drma" property="gardenDrma" jdbcType="INTEGER" />
+    <result column="garden_undergraduate" property="gardenUndergraduate" jdbcType="INTEGER" />
+    <result column="garden_lawcareer" property="gardenLawcareer" jdbcType="VARCHAR" />
+    <result column="garden_check" property="gardenCheck" jdbcType="INTEGER" />
+    <result column="garden_create" property="gardenCreate" jdbcType="DATE" />
+    <result column="garden_update" property="gardenUpdate" jdbcType="DATE" />
+    <result column="front_id" property="frontId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    garden_id, garden_company, garden_registration, garden_date, garden_area, ind_id, 
+    garden_products, garden_iacr, garden_lawperson, garden_lawphone, garden_capital, 
+    garden_address, garden_regtime, garden_sale, garden_ratal, garden_ip, garden_linkname, 
+    garden_linkphone, garden_linkfax, garden_linkemail, garden_headcount, garden_partner, 
+    garden_drma, garden_undergraduate, garden_lawcareer, garden_check, garden_create, 
+    garden_update, front_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.GardenApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from garden_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from garden_apply
+    where garden_id = #{gardenId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from garden_apply
+    where garden_id = #{gardenId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.GardenApplyExample" >
+    delete from garden_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.GardenApply" >
+    insert into garden_apply (garden_id, garden_company, garden_registration, 
+      garden_date, garden_area, ind_id, 
+      garden_products, garden_iacr, garden_lawperson, 
+      garden_lawphone, garden_capital, garden_address, 
+      garden_regtime, garden_sale, garden_ratal, 
+      garden_ip, garden_linkname, garden_linkphone, 
+      garden_linkfax, garden_linkemail, garden_headcount, 
+      garden_partner, garden_drma, garden_undergraduate, 
+      garden_lawcareer, garden_check, garden_create, 
+      garden_update, front_id)
+    values (#{gardenId,jdbcType=INTEGER}, #{gardenCompany,jdbcType=VARCHAR}, #{gardenRegistration,jdbcType=VARCHAR}, 
+      #{gardenDate,jdbcType=DATE}, #{gardenArea,jdbcType=DOUBLE}, #{indId,jdbcType=BIGINT}, 
+      #{gardenProducts,jdbcType=VARCHAR}, #{gardenIacr,jdbcType=INTEGER}, #{gardenLawperson,jdbcType=VARCHAR}, 
+      #{gardenLawphone,jdbcType=VARCHAR}, #{gardenCapital,jdbcType=DOUBLE}, #{gardenAddress,jdbcType=VARCHAR}, 
+      #{gardenRegtime,jdbcType=DATE}, #{gardenSale,jdbcType=DOUBLE}, #{gardenRatal,jdbcType=DOUBLE}, 
+      #{gardenIp,jdbcType=VARCHAR}, #{gardenLinkname,jdbcType=VARCHAR}, #{gardenLinkphone,jdbcType=VARCHAR}, 
+      #{gardenLinkfax,jdbcType=VARCHAR}, #{gardenLinkemail,jdbcType=VARCHAR}, #{gardenHeadcount,jdbcType=INTEGER}, 
+      #{gardenPartner,jdbcType=VARCHAR}, #{gardenDrma,jdbcType=INTEGER}, #{gardenUndergraduate,jdbcType=INTEGER}, 
+      #{gardenLawcareer,jdbcType=VARCHAR}, #{gardenCheck,jdbcType=INTEGER}, #{gardenCreate,jdbcType=DATE}, 
+      #{gardenUpdate,jdbcType=DATE}, #{frontId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.GardenApply" >
+    insert into garden_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gardenId != null" >
+        garden_id,
+      </if>
+      <if test="gardenCompany != null" >
+        garden_company,
+      </if>
+      <if test="gardenRegistration != null" >
+        garden_registration,
+      </if>
+      <if test="gardenDate != null" >
+        garden_date,
+      </if>
+      <if test="gardenArea != null" >
+        garden_area,
+      </if>
+      <if test="indId != null" >
+        ind_id,
+      </if>
+      <if test="gardenProducts != null" >
+        garden_products,
+      </if>
+      <if test="gardenIacr != null" >
+        garden_iacr,
+      </if>
+      <if test="gardenLawperson != null" >
+        garden_lawperson,
+      </if>
+      <if test="gardenLawphone != null" >
+        garden_lawphone,
+      </if>
+      <if test="gardenCapital != null" >
+        garden_capital,
+      </if>
+      <if test="gardenAddress != null" >
+        garden_address,
+      </if>
+      <if test="gardenRegtime != null" >
+        garden_regtime,
+      </if>
+      <if test="gardenSale != null" >
+        garden_sale,
+      </if>
+      <if test="gardenRatal != null" >
+        garden_ratal,
+      </if>
+      <if test="gardenIp != null" >
+        garden_ip,
+      </if>
+      <if test="gardenLinkname != null" >
+        garden_linkname,
+      </if>
+      <if test="gardenLinkphone != null" >
+        garden_linkphone,
+      </if>
+      <if test="gardenLinkfax != null" >
+        garden_linkfax,
+      </if>
+      <if test="gardenLinkemail != null" >
+        garden_linkemail,
+      </if>
+      <if test="gardenHeadcount != null" >
+        garden_headcount,
+      </if>
+      <if test="gardenPartner != null" >
+        garden_partner,
+      </if>
+      <if test="gardenDrma != null" >
+        garden_drma,
+      </if>
+      <if test="gardenUndergraduate != null" >
+        garden_undergraduate,
+      </if>
+      <if test="gardenLawcareer != null" >
+        garden_lawcareer,
+      </if>
+      <if test="gardenCheck != null" >
+        garden_check,
+      </if>
+      <if test="gardenCreate != null" >
+        garden_create,
+      </if>
+      <if test="gardenUpdate != null" >
+        garden_update,
+      </if>
+      <if test="frontId != null" >
+        front_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gardenId != null" >
+        #{gardenId,jdbcType=INTEGER},
+      </if>
+      <if test="gardenCompany != null" >
+        #{gardenCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenRegistration != null" >
+        #{gardenRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenDate != null" >
+        #{gardenDate,jdbcType=DATE},
+      </if>
+      <if test="gardenArea != null" >
+        #{gardenArea,jdbcType=DOUBLE},
+      </if>
+      <if test="indId != null" >
+        #{indId,jdbcType=BIGINT},
+      </if>
+      <if test="gardenProducts != null" >
+        #{gardenProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenIacr != null" >
+        #{gardenIacr,jdbcType=INTEGER},
+      </if>
+      <if test="gardenLawperson != null" >
+        #{gardenLawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLawphone != null" >
+        #{gardenLawphone,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenCapital != null" >
+        #{gardenCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="gardenAddress != null" >
+        #{gardenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenRegtime != null" >
+        #{gardenRegtime,jdbcType=DATE},
+      </if>
+      <if test="gardenSale != null" >
+        #{gardenSale,jdbcType=DOUBLE},
+      </if>
+      <if test="gardenRatal != null" >
+        #{gardenRatal,jdbcType=DOUBLE},
+      </if>
+      <if test="gardenIp != null" >
+        #{gardenIp,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkname != null" >
+        #{gardenLinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkphone != null" >
+        #{gardenLinkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkfax != null" >
+        #{gardenLinkfax,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkemail != null" >
+        #{gardenLinkemail,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenHeadcount != null" >
+        #{gardenHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="gardenPartner != null" >
+        #{gardenPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenDrma != null" >
+        #{gardenDrma,jdbcType=INTEGER},
+      </if>
+      <if test="gardenUndergraduate != null" >
+        #{gardenUndergraduate,jdbcType=INTEGER},
+      </if>
+      <if test="gardenLawcareer != null" >
+        #{gardenLawcareer,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenCheck != null" >
+        #{gardenCheck,jdbcType=INTEGER},
+      </if>
+      <if test="gardenCreate != null" >
+        #{gardenCreate,jdbcType=DATE},
+      </if>
+      <if test="gardenUpdate != null" >
+        #{gardenUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        #{frontId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.GardenApplyExample" resultType="java.lang.Integer" >
+    select count(*) from garden_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update garden_apply
+    <set >
+      <if test="record.gardenId != null" >
+        garden_id = #{record.gardenId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gardenCompany != null" >
+        garden_company = #{record.gardenCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenRegistration != null" >
+        garden_registration = #{record.gardenRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenDate != null" >
+        garden_date = #{record.gardenDate,jdbcType=DATE},
+      </if>
+      <if test="record.gardenArea != null" >
+        garden_area = #{record.gardenArea,jdbcType=DOUBLE},
+      </if>
+      <if test="record.indId != null" >
+        ind_id = #{record.indId,jdbcType=BIGINT},
+      </if>
+      <if test="record.gardenProducts != null" >
+        garden_products = #{record.gardenProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenIacr != null" >
+        garden_iacr = #{record.gardenIacr,jdbcType=INTEGER},
+      </if>
+      <if test="record.gardenLawperson != null" >
+        garden_lawperson = #{record.gardenLawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenLawphone != null" >
+        garden_lawphone = #{record.gardenLawphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenCapital != null" >
+        garden_capital = #{record.gardenCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gardenAddress != null" >
+        garden_address = #{record.gardenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenRegtime != null" >
+        garden_regtime = #{record.gardenRegtime,jdbcType=DATE},
+      </if>
+      <if test="record.gardenSale != null" >
+        garden_sale = #{record.gardenSale,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gardenRatal != null" >
+        garden_ratal = #{record.gardenRatal,jdbcType=DOUBLE},
+      </if>
+      <if test="record.gardenIp != null" >
+        garden_ip = #{record.gardenIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenLinkname != null" >
+        garden_linkname = #{record.gardenLinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenLinkphone != null" >
+        garden_linkphone = #{record.gardenLinkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenLinkfax != null" >
+        garden_linkfax = #{record.gardenLinkfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenLinkemail != null" >
+        garden_linkemail = #{record.gardenLinkemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenHeadcount != null" >
+        garden_headcount = #{record.gardenHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.gardenPartner != null" >
+        garden_partner = #{record.gardenPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenDrma != null" >
+        garden_drma = #{record.gardenDrma,jdbcType=INTEGER},
+      </if>
+      <if test="record.gardenUndergraduate != null" >
+        garden_undergraduate = #{record.gardenUndergraduate,jdbcType=INTEGER},
+      </if>
+      <if test="record.gardenLawcareer != null" >
+        garden_lawcareer = #{record.gardenLawcareer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gardenCheck != null" >
+        garden_check = #{record.gardenCheck,jdbcType=INTEGER},
+      </if>
+      <if test="record.gardenCreate != null" >
+        garden_create = #{record.gardenCreate,jdbcType=DATE},
+      </if>
+      <if test="record.gardenUpdate != null" >
+        garden_update = #{record.gardenUpdate,jdbcType=DATE},
+      </if>
+      <if test="record.frontId != null" >
+        front_id = #{record.frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update garden_apply
+    set garden_id = #{record.gardenId,jdbcType=INTEGER},
+      garden_company = #{record.gardenCompany,jdbcType=VARCHAR},
+      garden_registration = #{record.gardenRegistration,jdbcType=VARCHAR},
+      garden_date = #{record.gardenDate,jdbcType=DATE},
+      garden_area = #{record.gardenArea,jdbcType=DOUBLE},
+      ind_id = #{record.indId,jdbcType=BIGINT},
+      garden_products = #{record.gardenProducts,jdbcType=VARCHAR},
+      garden_iacr = #{record.gardenIacr,jdbcType=INTEGER},
+      garden_lawperson = #{record.gardenLawperson,jdbcType=VARCHAR},
+      garden_lawphone = #{record.gardenLawphone,jdbcType=VARCHAR},
+      garden_capital = #{record.gardenCapital,jdbcType=DOUBLE},
+      garden_address = #{record.gardenAddress,jdbcType=VARCHAR},
+      garden_regtime = #{record.gardenRegtime,jdbcType=DATE},
+      garden_sale = #{record.gardenSale,jdbcType=DOUBLE},
+      garden_ratal = #{record.gardenRatal,jdbcType=DOUBLE},
+      garden_ip = #{record.gardenIp,jdbcType=VARCHAR},
+      garden_linkname = #{record.gardenLinkname,jdbcType=VARCHAR},
+      garden_linkphone = #{record.gardenLinkphone,jdbcType=VARCHAR},
+      garden_linkfax = #{record.gardenLinkfax,jdbcType=VARCHAR},
+      garden_linkemail = #{record.gardenLinkemail,jdbcType=VARCHAR},
+      garden_headcount = #{record.gardenHeadcount,jdbcType=INTEGER},
+      garden_partner = #{record.gardenPartner,jdbcType=VARCHAR},
+      garden_drma = #{record.gardenDrma,jdbcType=INTEGER},
+      garden_undergraduate = #{record.gardenUndergraduate,jdbcType=INTEGER},
+      garden_lawcareer = #{record.gardenLawcareer,jdbcType=VARCHAR},
+      garden_check = #{record.gardenCheck,jdbcType=INTEGER},
+      garden_create = #{record.gardenCreate,jdbcType=DATE},
+      garden_update = #{record.gardenUpdate,jdbcType=DATE},
+      front_id = #{record.frontId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.GardenApply" >
+    update garden_apply
+    <set >
+      <if test="gardenCompany != null" >
+        garden_company = #{gardenCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenRegistration != null" >
+        garden_registration = #{gardenRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenDate != null" >
+        garden_date = #{gardenDate,jdbcType=DATE},
+      </if>
+      <if test="gardenArea != null" >
+        garden_area = #{gardenArea,jdbcType=DOUBLE},
+      </if>
+      <if test="indId != null" >
+        ind_id = #{indId,jdbcType=BIGINT},
+      </if>
+      <if test="gardenProducts != null" >
+        garden_products = #{gardenProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenIacr != null" >
+        garden_iacr = #{gardenIacr,jdbcType=INTEGER},
+      </if>
+      <if test="gardenLawperson != null" >
+        garden_lawperson = #{gardenLawperson,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLawphone != null" >
+        garden_lawphone = #{gardenLawphone,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenCapital != null" >
+        garden_capital = #{gardenCapital,jdbcType=DOUBLE},
+      </if>
+      <if test="gardenAddress != null" >
+        garden_address = #{gardenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenRegtime != null" >
+        garden_regtime = #{gardenRegtime,jdbcType=DATE},
+      </if>
+      <if test="gardenSale != null" >
+        garden_sale = #{gardenSale,jdbcType=DOUBLE},
+      </if>
+      <if test="gardenRatal != null" >
+        garden_ratal = #{gardenRatal,jdbcType=DOUBLE},
+      </if>
+      <if test="gardenIp != null" >
+        garden_ip = #{gardenIp,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkname != null" >
+        garden_linkname = #{gardenLinkname,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkphone != null" >
+        garden_linkphone = #{gardenLinkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkfax != null" >
+        garden_linkfax = #{gardenLinkfax,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenLinkemail != null" >
+        garden_linkemail = #{gardenLinkemail,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenHeadcount != null" >
+        garden_headcount = #{gardenHeadcount,jdbcType=INTEGER},
+      </if>
+      <if test="gardenPartner != null" >
+        garden_partner = #{gardenPartner,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenDrma != null" >
+        garden_drma = #{gardenDrma,jdbcType=INTEGER},
+      </if>
+      <if test="gardenUndergraduate != null" >
+        garden_undergraduate = #{gardenUndergraduate,jdbcType=INTEGER},
+      </if>
+      <if test="gardenLawcareer != null" >
+        garden_lawcareer = #{gardenLawcareer,jdbcType=VARCHAR},
+      </if>
+      <if test="gardenCheck != null" >
+        garden_check = #{gardenCheck,jdbcType=INTEGER},
+      </if>
+      <if test="gardenCreate != null" >
+        garden_create = #{gardenCreate,jdbcType=DATE},
+      </if>
+      <if test="gardenUpdate != null" >
+        garden_update = #{gardenUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        front_id = #{frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where garden_id = #{gardenId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.GardenApply" >
+    update garden_apply
+    set garden_company = #{gardenCompany,jdbcType=VARCHAR},
+      garden_registration = #{gardenRegistration,jdbcType=VARCHAR},
+      garden_date = #{gardenDate,jdbcType=DATE},
+      garden_area = #{gardenArea,jdbcType=DOUBLE},
+      ind_id = #{indId,jdbcType=BIGINT},
+      garden_products = #{gardenProducts,jdbcType=VARCHAR},
+      garden_iacr = #{gardenIacr,jdbcType=INTEGER},
+      garden_lawperson = #{gardenLawperson,jdbcType=VARCHAR},
+      garden_lawphone = #{gardenLawphone,jdbcType=VARCHAR},
+      garden_capital = #{gardenCapital,jdbcType=DOUBLE},
+      garden_address = #{gardenAddress,jdbcType=VARCHAR},
+      garden_regtime = #{gardenRegtime,jdbcType=DATE},
+      garden_sale = #{gardenSale,jdbcType=DOUBLE},
+      garden_ratal = #{gardenRatal,jdbcType=DOUBLE},
+      garden_ip = #{gardenIp,jdbcType=VARCHAR},
+      garden_linkname = #{gardenLinkname,jdbcType=VARCHAR},
+      garden_linkphone = #{gardenLinkphone,jdbcType=VARCHAR},
+      garden_linkfax = #{gardenLinkfax,jdbcType=VARCHAR},
+      garden_linkemail = #{gardenLinkemail,jdbcType=VARCHAR},
+      garden_headcount = #{gardenHeadcount,jdbcType=INTEGER},
+      garden_partner = #{gardenPartner,jdbcType=VARCHAR},
+      garden_drma = #{gardenDrma,jdbcType=INTEGER},
+      garden_undergraduate = #{gardenUndergraduate,jdbcType=INTEGER},
+      garden_lawcareer = #{gardenLawcareer,jdbcType=VARCHAR},
+      garden_check = #{gardenCheck,jdbcType=INTEGER},
+      garden_create = #{gardenCreate,jdbcType=DATE},
+      garden_update = #{gardenUpdate,jdbcType=DATE},
+      front_id = #{frontId,jdbcType=BIGINT}
+    where garden_id = #{gardenId,jdbcType=INTEGER}
+  </update>
+</mapper>

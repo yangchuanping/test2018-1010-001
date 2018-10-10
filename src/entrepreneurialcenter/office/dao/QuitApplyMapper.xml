@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.QuitApplyMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.QuitApply" >
+    <id column="quit_id" property="quitId" jdbcType="INTEGER" />
+    <result column="quit_company" property="quitCompany" jdbcType="VARCHAR" />
+    <result column="quit_region" property="quitRegion" jdbcType="VARCHAR" />
+    <result column="quit_number" property="quitNumber" jdbcType="VARCHAR" />
+    <result column="quit_name" property="quitName" jdbcType="VARCHAR" />
+    <result column="quit_phone" property="quitPhone" jdbcType="VARCHAR" />
+    <result column="quit_date" property="quitDate" jdbcType="DATE" />
+    <result column="quit_state" property="quitState" jdbcType="INTEGER" />
+    <result column="quit_type" property="quitType" jdbcType="INTEGER" />
+    <result column="quit_check" property="quitCheck" jdbcType="INTEGER" />
+    <result column="quit_create" property="quitCreate" jdbcType="DATE" />
+    <result column="quit_update" property="quitUpdate" jdbcType="DATE" />
+    <result column="front_id" property="frontId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    quit_id, quit_company, quit_region, quit_number, quit_name, quit_phone, quit_date, 
+    quit_state, quit_type, quit_check, quit_create, quit_update, front_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.QuitApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from quit_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from quit_apply
+    where quit_id = #{quitId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from quit_apply
+    where quit_id = #{quitId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.QuitApplyExample" >
+    delete from quit_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.QuitApply" >
+    insert into quit_apply (quit_id, quit_company, quit_region, 
+      quit_number, quit_name, quit_phone, 
+      quit_date, quit_state, quit_type, 
+      quit_check, quit_create, quit_update, 
+      front_id)
+    values (#{quitId,jdbcType=INTEGER}, #{quitCompany,jdbcType=VARCHAR}, #{quitRegion,jdbcType=VARCHAR}, 
+      #{quitNumber,jdbcType=VARCHAR}, #{quitName,jdbcType=VARCHAR}, #{quitPhone,jdbcType=VARCHAR}, 
+      #{quitDate,jdbcType=DATE}, #{quitState,jdbcType=INTEGER}, #{quitType,jdbcType=INTEGER}, 
+      #{quitCheck,jdbcType=INTEGER}, #{quitCreate,jdbcType=DATE}, #{quitUpdate,jdbcType=DATE}, 
+      #{frontId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.QuitApply" >
+    insert into quit_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="quitId != null" >
+        quit_id,
+      </if>
+      <if test="quitCompany != null" >
+        quit_company,
+      </if>
+      <if test="quitRegion != null" >
+        quit_region,
+      </if>
+      <if test="quitNumber != null" >
+        quit_number,
+      </if>
+      <if test="quitName != null" >
+        quit_name,
+      </if>
+      <if test="quitPhone != null" >
+        quit_phone,
+      </if>
+      <if test="quitDate != null" >
+        quit_date,
+      </if>
+      <if test="quitState != null" >
+        quit_state,
+      </if>
+      <if test="quitType != null" >
+        quit_type,
+      </if>
+      <if test="quitCheck != null" >
+        quit_check,
+      </if>
+      <if test="quitCreate != null" >
+        quit_create,
+      </if>
+      <if test="quitUpdate != null" >
+        quit_update,
+      </if>
+      <if test="frontId != null" >
+        front_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="quitId != null" >
+        #{quitId,jdbcType=INTEGER},
+      </if>
+      <if test="quitCompany != null" >
+        #{quitCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="quitRegion != null" >
+        #{quitRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="quitNumber != null" >
+        #{quitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="quitName != null" >
+        #{quitName,jdbcType=VARCHAR},
+      </if>
+      <if test="quitPhone != null" >
+        #{quitPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="quitDate != null" >
+        #{quitDate,jdbcType=DATE},
+      </if>
+      <if test="quitState != null" >
+        #{quitState,jdbcType=INTEGER},
+      </if>
+      <if test="quitType != null" >
+        #{quitType,jdbcType=INTEGER},
+      </if>
+      <if test="quitCheck != null" >
+        #{quitCheck,jdbcType=INTEGER},
+      </if>
+      <if test="quitCreate != null" >
+        #{quitCreate,jdbcType=DATE},
+      </if>
+      <if test="quitUpdate != null" >
+        #{quitUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        #{frontId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.QuitApplyExample" resultType="java.lang.Integer" >
+    select count(*) from quit_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update quit_apply
+    <set >
+      <if test="record.quitId != null" >
+        quit_id = #{record.quitId,jdbcType=INTEGER},
+      </if>
+      <if test="record.quitCompany != null" >
+        quit_company = #{record.quitCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quitRegion != null" >
+        quit_region = #{record.quitRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quitNumber != null" >
+        quit_number = #{record.quitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quitName != null" >
+        quit_name = #{record.quitName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quitPhone != null" >
+        quit_phone = #{record.quitPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quitDate != null" >
+        quit_date = #{record.quitDate,jdbcType=DATE},
+      </if>
+      <if test="record.quitState != null" >
+        quit_state = #{record.quitState,jdbcType=INTEGER},
+      </if>
+      <if test="record.quitType != null" >
+        quit_type = #{record.quitType,jdbcType=INTEGER},
+      </if>
+      <if test="record.quitCheck != null" >
+        quit_check = #{record.quitCheck,jdbcType=INTEGER},
+      </if>
+      <if test="record.quitCreate != null" >
+        quit_create = #{record.quitCreate,jdbcType=DATE},
+      </if>
+      <if test="record.quitUpdate != null" >
+        quit_update = #{record.quitUpdate,jdbcType=DATE},
+      </if>
+      <if test="record.frontId != null" >
+        front_id = #{record.frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update quit_apply
+    set quit_id = #{record.quitId,jdbcType=INTEGER},
+      quit_company = #{record.quitCompany,jdbcType=VARCHAR},
+      quit_region = #{record.quitRegion,jdbcType=VARCHAR},
+      quit_number = #{record.quitNumber,jdbcType=VARCHAR},
+      quit_name = #{record.quitName,jdbcType=VARCHAR},
+      quit_phone = #{record.quitPhone,jdbcType=VARCHAR},
+      quit_date = #{record.quitDate,jdbcType=DATE},
+      quit_state = #{record.quitState,jdbcType=INTEGER},
+      quit_type = #{record.quitType,jdbcType=INTEGER},
+      quit_check = #{record.quitCheck,jdbcType=INTEGER},
+      quit_create = #{record.quitCreate,jdbcType=DATE},
+      quit_update = #{record.quitUpdate,jdbcType=DATE},
+      front_id = #{record.frontId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.QuitApply" >
+    update quit_apply
+    <set >
+      <if test="quitCompany != null" >
+        quit_company = #{quitCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="quitRegion != null" >
+        quit_region = #{quitRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="quitNumber != null" >
+        quit_number = #{quitNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="quitName != null" >
+        quit_name = #{quitName,jdbcType=VARCHAR},
+      </if>
+      <if test="quitPhone != null" >
+        quit_phone = #{quitPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="quitDate != null" >
+        quit_date = #{quitDate,jdbcType=DATE},
+      </if>
+      <if test="quitState != null" >
+        quit_state = #{quitState,jdbcType=INTEGER},
+      </if>
+      <if test="quitType != null" >
+        quit_type = #{quitType,jdbcType=INTEGER},
+      </if>
+      <if test="quitCheck != null" >
+        quit_check = #{quitCheck,jdbcType=INTEGER},
+      </if>
+      <if test="quitCreate != null" >
+        quit_create = #{quitCreate,jdbcType=DATE},
+      </if>
+      <if test="quitUpdate != null" >
+        quit_update = #{quitUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        front_id = #{frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where quit_id = #{quitId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.QuitApply" >
+    update quit_apply
+    set quit_company = #{quitCompany,jdbcType=VARCHAR},
+      quit_region = #{quitRegion,jdbcType=VARCHAR},
+      quit_number = #{quitNumber,jdbcType=VARCHAR},
+      quit_name = #{quitName,jdbcType=VARCHAR},
+      quit_phone = #{quitPhone,jdbcType=VARCHAR},
+      quit_date = #{quitDate,jdbcType=DATE},
+      quit_state = #{quitState,jdbcType=INTEGER},
+      quit_type = #{quitType,jdbcType=INTEGER},
+      quit_check = #{quitCheck,jdbcType=INTEGER},
+      quit_create = #{quitCreate,jdbcType=DATE},
+      quit_update = #{quitUpdate,jdbcType=DATE},
+      front_id = #{frontId,jdbcType=BIGINT}
+    where quit_id = #{quitId,jdbcType=INTEGER}
+  </update>
+</mapper>

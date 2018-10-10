@@ -1,0 +1,398 @@
+/*杞挱鍥惧渾鐐归鑹�*/
+.swiper-pagination-bullet-active {
+	background: white;
+}
+.swiper-container{
+	width: 100%;
+}
+/*.swiper-container img{
+	width: 100%;
+}*/
+.d-title{
+	width: 60%;
+	margin: 20px auto 0;
+	text-align: center;
+	border-bottom: 2px solid #DEDEDE;
+	padding-bottom: 0px;
+}
+.d-title h2{
+	font-size: 24px;
+	color: #333333;
+	font-weight: 500 !important;
+	margin: 15px 0;
+}
+.d-title p{
+	font-size: 18px;
+	color: #666666;
+	margin: 15px 0;
+}
+.d-title div{
+	width: 50px;
+	height: 3px;
+	background-color: #2296d8;
+	margin: 0 auto;
+	
+}
+.d-firm{
+	width: 60%;
+	padding: 30px 0;
+	margin: 0 auto;
+}
+.d-firm a{
+	display: inline-block;
+	width: 24.5%;
+	text-align: center;
+	margin: 20px 0;
+}
+.d-firm img{
+	width: 200px;
+	height: 200px;
+}
+/**/
+.d-about{
+	padding-top: 10px;
+	padding-bottom: 30px;
+	background-color: #F2F2F2;
+}
+.ab-content{
+	width: 60%;
+	margin: 30px auto 0;
+	overflow: hidden;
+}
+.ab-left-img{
+	width: 45%;
+	position: relative;
+	float: left;
+}
+/*.ab-left-img:hover{
+	top: -2px;
+	box-shadow: 0px 0px 8px 3px #ACACAC;
+}*/
+.ab-left-img img{
+	width: 100%;
+	height: 300px;
+}
+.ab-left-text{
+	width: 100%;
+	height: 90px;
+	position: absolute;
+	bottom: 3px;
+	background-color: rgba(0,0,0,0.5);
+	padding: 5px;
+	box-sizing: border-box;
+}
+.ab-left-text span{
+	color: white;
+	font-size: 18px !important;
+	font-weight: 500;
+}
+.ab-left-text i{
+	color: white;
+	font-size: 14px !important;
+	font-style: normal;
+}
+.ab-left-text p{
+	font-size: 15px !important;
+	color: white;
+	margin: 10px 0;
+	line-height: 20px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.ab-right{
+	width: 55%;
+	float: left;
+	box-sizing: border-box;
+	padding-top: 10px;
+	padding-left: 30px;
+}
+.ab-right-div{
+	width: 50%;
+	height: 150px;
+	float: left;
+}
+.ab-right-div img{
+	width: 100%;
+	height: 150px;
+}
+.ab-right-div span{
+	color: #333333;
+	font-size: 20px !important;
+	font-weight: 600;
+}
+.ab-right-div i{
+	color: #333333;
+	font-size: 14px !important;
+	font-style: normal;
+}
+.ab-right-div p{
+	font-size: 14px !important;
+	color: #666666;
+	margin: 5px 0 0 0;
+	line-height: 20px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	overflow: hidden;
+}
+.ab-padding{
+	padding: 15px;
+	box-sizing: border-box;
+}
+/**/
+.d-attrac{
+	width: 60%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.d-attrac-div{
+	width: 50%;
+	height: 265px;
+	float: left;
+}
+.d-attrac-div img{
+	width: 100%;
+	height: 265px;
+}
+.d-attrac-p1{
+	margin: 10px 0;
+	line-height: 35px;
+	color: #434343;
+	font-size: 20px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 6;
+	overflow: hidden;
+	cursor: pointer;
+	text-indent:2em;
+}
+.d-attrac-p2{
+	margin: 8px 0;
+	color: #6F6F6F;
+	font-size: 16px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.attrac-1{
+	margin-top: 30px;
+}
+.d-product{
+	margin-bottom: 30px;
+}
+/**/
+.d-news{
+	width: 60%;
+	margin: 30px auto;
+	overflow: hidden;
+}
+.news-left{
+	width: 45%;
+	float: left;
+}
+.news-left img{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.news-i{
+	display: inline-block;
+	width: 70px;
+	background-color: #2296D8;
+	font-style: normal;
+	color: white;
+	font-size: 23px !important;
+	padding: 5px;
+	margin-right: 10px;
+	float: left;
+	word-wrap:break-word; 
+	white-space:-moz-pre-wrap;
+}
+.news-span{
+	font-size: 18px;
+	line-height: 35px;
+	color: #404040;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+}
+.nsp{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.news-p{
+	height: 63px;
+	color: #6F6F6F;
+	font-size: 16px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+.news-right{
+	width: 55%;
+	height: 300px;
+	float: left;
+	box-sizing: border-box;
+	padding-left: 60px;
+}
+.news-div{
+	margin-bottom: 25px;
+}
+.news-p2{
+	height: 42px;
+	margin: 0px;
+	color: #6F6F6F;
+	font-size: 16px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.news-i2{
+	background-color: #C5C5C5;
+}
+.more-news{
+	width: 100px;
+	background-color: #645555;
+	padding: 5px;
+	font-size: 22px;
+	margin: 0 auto;
+	text-align: center;
+}
+.more-news a{
+	text-decoration: none;
+	color: white;
+}
+/**/
+.d-table{
+	width: 55%;
+	height: 350px;
+	margin: 20px auto 0;
+	overflow-y: hidden;
+}
+.table1{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #E5E5E5;
+	text-align: center;
+	border-collapse:collapse;
+	border-spacing:0;  
+	word-wrap:break-word;
+	word-break:break-all;
+}
+.table1 thead{
+	background-color: #EFEFEF;
+	display:block;
+	width: 100%;
+}
+.table1 th{
+	color: #717679;
+	background-color: #EFEFEF;
+	border: 1px solid #E5E5E5;
+	width: 253px;
+	height: 40px;
+	font-size: 16px;
+	font-weight: 500;
+}
+.table1 tbody{
+	display: block;  
+    height: 300px;  
+    overflow: auto;  
+    width: 100%;  
+}
+.table1 td{
+	border: 1px solid #E5E5E5;
+	width: 260px;
+	height: 60px;
+	padding: 5px;
+	color: #6C767B;
+}
+.table1 tr:nth-child(2n){
+	background: #F9F9F9;
+}
+
+
+/*绉诲姩璁惧*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+body{
+	overflow-x: hidden;		
+}
+.swiper-container {
+    height: 300px;
+}
+.swiper-container img{
+	height: 100%;
+}
+.d-firm{
+	width: 100%;
+}
+.d-firm a{
+	width: 49.2%;
+	margin: 20px 0;
+}
+.d-firm img{
+	width: 70%;
+	height: 70%;
+}
+.ab-content{
+	width: 100%;
+}
+.ab-left-img{
+	width: 100%;
+}
+.ab-right{
+	width: 100%;
+	padding: 0;
+}
+.d-attrac{
+	width: 100%;
+}
+.d-attrac-div{
+	height: 150px;
+}
+.d-attrac-div img{
+	height: 150px;
+}
+.ab-padding{
+	padding: 5px;
+}
+.d-attrac-p1 {
+    margin: 0;
+    line-height: 28px;
+    font-size: 15px;
+}
+.d-attrac-p2 {
+    margin: 7px 0;
+    font-size: 12px;
+    -webkit-line-clamp: 1;
+}
+.d-news{
+	width: 100%;
+}
+.news-left{
+	width: 100%;
+}
+.news-right{
+	width: 100%;
+	height: auto;
+	padding: 0 10px;
+}
+.d-table{
+	width: 100%;
+	height: 350px;
+}
+.news-p{
+	margin: 10px 0 30px;
+	padding: 0 10px;
+}
+.mar{
+	margin-left: 10px;
+}
+}
+

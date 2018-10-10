@@ -1,0 +1,107 @@
+body{
+	margin: 0;
+	padding: 0;	
+	background-image: url(../../img/login/bg.png);
+	background-repeat: no-repeat;
+}
+.all_box{
+	width: 991px;
+	height: 744px;
+	background-image: url(../../img/login/bgimg.png);
+	position: fixed;
+	top: 200px;
+	right: 0;
+}
+.outsiade_div{
+	width: 640px;
+	height: 385px;
+	background-color: #EBEBEA;
+	box-sizing: border-box;
+	padding: 20px;
+	position: absolute;
+	top: 75px;
+	left: 172px;
+}
+.inside_div{
+	width: 600px;
+	height: 345px;
+	background-color: white;
+	box-sizing: border-box;
+	padding: 30px;
+}
+.input_div{
+	width: 90%;
+	height: 52px;
+	line-height: 52px;
+	margin: 0 auto 20px;
+	position: relative;
+}
+.input_div .lab{
+	font-size: 24px;
+	color: #333333;
+}
+.input_div input{
+	width: 80%;
+	height: 52px;
+	float: right;
+	outline: none;
+	font-size: 18px;
+	color: #999999;
+	box-sizing: border-box;
+	padding-left: 20px;
+	border-radius: 5px;
+	border: 1px solid #999999;
+}
+.input_div button{
+	width: 100%;
+	height: 60px;
+	font-size: 24px;
+	color: white;
+	background-color: #4CB4FB;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.input_div .sec{
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+
+
+/*移动端*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+.all_box{
+	width: auto;
+	height: auto;
+	position: static;
+}
+.outsiade_div{
+	width: 100%;
+	height: auto;
+	position: static;
+	margin-top: 100px;
+	padding: 15px;
+}
+.inside_div{
+	width: 100%;
+	padding: 20px;
+}
+.input_div{	
+	height: 45px;
+	line-height: 45px;	
+}
+.input_div .lab{
+	font-size: 16px;	
+}
+.input_div input{
+	font-size: 16px;
+	height: 45px;	
+}
+.sec canvas{
+	width: 85px;
+}
+
+
+}

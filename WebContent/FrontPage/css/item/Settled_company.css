@@ -1,0 +1,74 @@
+.cm-box{
+	width: 60%;
+	margin: 15px auto 0;
+}
+.cm-box i{
+	font-style: normal;
+    font-size: 14px;
+    color: #6F6F6F;
+}
+.d-search{
+	width: 498px;
+	margin: 40px auto;
+	text-align: center;
+	position: relative;
+}
+.d-search img{
+	position: absolute;
+	top: 14px;
+	left: 15px;
+}
+.d-search input{
+	display: inline-block;
+	width: 400px;
+	height: 40px;
+	border: 1px solid #7CCEF3;
+	font-size: 14px;
+	color: #6f6f6f;
+	box-sizing: border-box;
+	padding-left: 40px;
+	outline: none;
+}
+.d-search span{
+	display: inline-block;
+	width: 98px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #4CB4FB;
+	color: white;
+	font-size: 16px;
+	text-align: center;
+	cursor: pointer;
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    float: right;	
+}
+.d-table{
+	height: 600px;
+}
+.table1 tbody{
+	height: 550px;
+}
+
+
+/*移动设备*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+.cm-box{
+	width: 90%;
+}
+.d-search{
+	width: 100%;
+}
+.d-search img{
+	left: 11%;
+}
+.d-search input{
+	width: 60%;
+}
+.d-search span{
+    float: none;	
+}
+	
+}

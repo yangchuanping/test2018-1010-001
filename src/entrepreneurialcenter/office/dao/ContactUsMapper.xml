@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.ContactUsMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.ContactUs" >
+    <id column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_email" property="contactEmail" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="contact_address" property="contactAddress" jdbcType="VARCHAR" />
+    <result column="contact_content" property="contactContent" jdbcType="VARCHAR" />
+    <result column="contact_check" property="contactCheck" jdbcType="INTEGER" />
+    <result column="contact_create" property="contactCreate" jdbcType="DATE" />
+    <result column="contact_update" property="contactUpdate" jdbcType="DATE" />
+    <result column="front_id" property="frontId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    contact_id, contact_name, contact_email, contact_phone, contact_address, contact_content, 
+    contact_check, contact_create, contact_update, front_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.ContactUsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from contact_us
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from contact_us
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from contact_us
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.ContactUsExample" >
+    delete from contact_us
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.ContactUs" >
+    insert into contact_us (contact_id, contact_name, contact_email, 
+      contact_phone, contact_address, contact_content, 
+      contact_check, contact_create, contact_update, 
+      front_id)
+    values (#{contactId,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, #{contactEmail,jdbcType=VARCHAR}, 
+      #{contactPhone,jdbcType=VARCHAR}, #{contactAddress,jdbcType=VARCHAR}, #{contactContent,jdbcType=VARCHAR}, 
+      #{contactCheck,jdbcType=INTEGER}, #{contactCreate,jdbcType=DATE}, #{contactUpdate,jdbcType=DATE}, 
+      #{frontId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.ContactUs" >
+    insert into contact_us
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactEmail != null" >
+        contact_email,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="contactAddress != null" >
+        contact_address,
+      </if>
+      <if test="contactContent != null" >
+        contact_content,
+      </if>
+      <if test="contactCheck != null" >
+        contact_check,
+      </if>
+      <if test="contactCreate != null" >
+        contact_create,
+      </if>
+      <if test="contactUpdate != null" >
+        contact_update,
+      </if>
+      <if test="frontId != null" >
+        front_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null" >
+        #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactContent != null" >
+        #{contactContent,jdbcType=VARCHAR},
+      </if>
+      <if test="contactCheck != null" >
+        #{contactCheck,jdbcType=INTEGER},
+      </if>
+      <if test="contactCreate != null" >
+        #{contactCreate,jdbcType=DATE},
+      </if>
+      <if test="contactUpdate != null" >
+        #{contactUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        #{frontId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.ContactUsExample" resultType="java.lang.Integer" >
+    select count(*) from contact_us
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update contact_us
+    <set >
+      <if test="record.contactId != null" >
+        contact_id = #{record.contactId,jdbcType=INTEGER},
+      </if>
+      <if test="record.contactName != null" >
+        contact_name = #{record.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactEmail != null" >
+        contact_email = #{record.contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactPhone != null" >
+        contact_phone = #{record.contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactAddress != null" >
+        contact_address = #{record.contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactContent != null" >
+        contact_content = #{record.contactContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactCheck != null" >
+        contact_check = #{record.contactCheck,jdbcType=INTEGER},
+      </if>
+      <if test="record.contactCreate != null" >
+        contact_create = #{record.contactCreate,jdbcType=DATE},
+      </if>
+      <if test="record.contactUpdate != null" >
+        contact_update = #{record.contactUpdate,jdbcType=DATE},
+      </if>
+      <if test="record.frontId != null" >
+        front_id = #{record.frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update contact_us
+    set contact_id = #{record.contactId,jdbcType=INTEGER},
+      contact_name = #{record.contactName,jdbcType=VARCHAR},
+      contact_email = #{record.contactEmail,jdbcType=VARCHAR},
+      contact_phone = #{record.contactPhone,jdbcType=VARCHAR},
+      contact_address = #{record.contactAddress,jdbcType=VARCHAR},
+      contact_content = #{record.contactContent,jdbcType=VARCHAR},
+      contact_check = #{record.contactCheck,jdbcType=INTEGER},
+      contact_create = #{record.contactCreate,jdbcType=DATE},
+      contact_update = #{record.contactUpdate,jdbcType=DATE},
+      front_id = #{record.frontId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.ContactUs" >
+    update contact_us
+    <set >
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        contact_email = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactAddress != null" >
+        contact_address = #{contactAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactContent != null" >
+        contact_content = #{contactContent,jdbcType=VARCHAR},
+      </if>
+      <if test="contactCheck != null" >
+        contact_check = #{contactCheck,jdbcType=INTEGER},
+      </if>
+      <if test="contactCreate != null" >
+        contact_create = #{contactCreate,jdbcType=DATE},
+      </if>
+      <if test="contactUpdate != null" >
+        contact_update = #{contactUpdate,jdbcType=DATE},
+      </if>
+      <if test="frontId != null" >
+        front_id = #{frontId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.ContactUs" >
+    update contact_us
+    set contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_email = #{contactEmail,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      contact_address = #{contactAddress,jdbcType=VARCHAR},
+      contact_content = #{contactContent,jdbcType=VARCHAR},
+      contact_check = #{contactCheck,jdbcType=INTEGER},
+      contact_create = #{contactCreate,jdbcType=DATE},
+      contact_update = #{contactUpdate,jdbcType=DATE},
+      front_id = #{frontId,jdbcType=BIGINT}
+    where contact_id = #{contactId,jdbcType=INTEGER}
+  </update>
+</mapper>

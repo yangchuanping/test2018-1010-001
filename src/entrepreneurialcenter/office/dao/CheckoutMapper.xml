@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.CheckoutMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.Checkout" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="checkout_dmt" property="checkoutDmt" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="reasons_type" property="reasonsType" jdbcType="VARCHAR" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="entrepreneurialcenter.office.pojo.Checkout" extends="BaseResultMap" >
+    <result column="reasons_text" property="reasonsText" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, item_id, item_name, checkout_dmt, address, contact, reasons_type, updated, created
+  </sql>
+  <sql id="Blob_Column_List" >
+    reasons_text
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="entrepreneurialcenter.office.pojo.CheckoutExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from checkout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.CheckoutExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from checkout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from checkout
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from checkout
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.CheckoutExample" >
+    delete from checkout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.Checkout" >
+    insert into checkout (id, item_id, item_name, 
+      checkout_dmt, address, contact, 
+      reasons_type, updated, created, 
+      reasons_text)
+    values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, 
+      #{checkoutDmt,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{reasonsType,jdbcType=VARCHAR}, #{updated,jdbcType=INTEGER}, #{created,jdbcType=INTEGER}, 
+      #{reasonsText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.Checkout" >
+    insert into checkout
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="checkoutDmt != null" >
+        checkout_dmt,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="reasonsType != null" >
+        reasons_type,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="reasonsText != null" >
+        reasons_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutDmt != null" >
+        #{checkoutDmt,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonsType != null" >
+        #{reasonsType,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=INTEGER},
+      </if>
+      <if test="reasonsText != null" >
+        #{reasonsText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.CheckoutExample" resultType="java.lang.Integer" >
+    select count(*) from checkout
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update checkout
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemId != null" >
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemName != null" >
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkoutDmt != null" >
+        checkout_dmt = #{record.checkoutDmt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null" >
+        contact = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reasonsType != null" >
+        reasons_type = #{record.reasonsType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=INTEGER},
+      </if>
+      <if test="record.reasonsText != null" >
+        reasons_text = #{record.reasonsText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update checkout
+    set id = #{record.id,jdbcType=INTEGER},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      checkout_dmt = #{record.checkoutDmt,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      reasons_type = #{record.reasonsType,jdbcType=VARCHAR},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER},
+      reasons_text = #{record.reasonsText,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update checkout
+    set id = #{record.id,jdbcType=INTEGER},
+      item_id = #{record.itemId,jdbcType=BIGINT},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      checkout_dmt = #{record.checkoutDmt,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      reasons_type = #{record.reasonsType,jdbcType=VARCHAR},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.Checkout" >
+    update checkout
+    <set >
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutDmt != null" >
+        checkout_dmt = #{checkoutDmt,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="reasonsType != null" >
+        reasons_type = #{reasonsType,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=INTEGER},
+      </if>
+      <if test="reasonsText != null" >
+        reasons_text = #{reasonsText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entrepreneurialcenter.office.pojo.Checkout" >
+    update checkout
+    set item_id = #{itemId,jdbcType=BIGINT},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      checkout_dmt = #{checkoutDmt,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      reasons_type = #{reasonsType,jdbcType=VARCHAR},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER},
+      reasons_text = #{reasonsText,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.Checkout" >
+    update checkout
+    set item_id = #{itemId,jdbcType=BIGINT},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      checkout_dmt = #{checkoutDmt,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      reasons_type = #{reasonsType,jdbcType=VARCHAR},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

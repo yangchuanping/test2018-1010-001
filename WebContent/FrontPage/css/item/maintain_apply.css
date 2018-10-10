@@ -1,0 +1,141 @@
+.content{
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+.content .til{
+	font-style: normal;
+	font-size: 14px;
+    color: #6F6F6F;
+}
+.bigBox{
+	width: 100%;
+	margin-top: 20px;
+	border-left: 2px solid #CEDFF8;
+	border-right: 2px solid #CEDFF8;
+}
+.page-name{
+	width: 100%;
+	background-color: #4CB4FB;
+	color: white;
+	font-size: 22px;
+	padding: 10px 15px;
+	box-sizing: border-box;
+}
+.s-box{
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid #F4F4F4;
+	padding: 10px 0;
+}
+.s-box .left{
+	width: 25%;	
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 15px;
+	color: #878787;
+	font-size: 16px;
+}
+.s-box .right{
+	width: 75%;
+	float: right;
+	box-sizing: border-box;
+	padding-left: 15px;
+}
+.s-box .right input,.s-box .right select{
+	width: 50%;
+	height: 35px;
+	font-size: 18px;
+	padding: 0 5px;	
+	color: #878787;
+}
+.rig-span{
+	display: inline-block;
+	width: 22%;
+	height: 130px;
+	box-sizing: border-box;
+	padding: 5px;
+	border: 1px solid #E5E5E5;
+}
+.rig-span img{
+	width: 100%;
+	height: 100%;
+}
+.ofile{
+	outline: none;
+	width: 85px !important;
+	margin-top: 10px;
+}
+.texta{
+	width: 88%;
+	height: 300px;
+}
+.b-submit{
+	width: 80px;
+	height: 35px;
+	background-color: #4CB4FB;
+	color: white;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+.b-cancel{
+	width: 80px;
+	height: 35px;
+	background-color: #D8D8D8;
+	color: #585858;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+.back-c{
+	background-color: #F5F5F5;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+
+/*移动设备*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+body{
+	overflow-x: hidden;
+}
+.content{
+	width: 100%;
+	padding-top: 10px;
+}	
+.til{
+	margin-left: 20px;
+}
+.bigBox{
+	margin-top: 10px;
+	border: none;
+}
+.s-box .left{
+	width: 35%;
+}	
+.s-box .right{
+	width: 65%;
+}
+.s-box .right input{
+	width: 70%;
+}
+.texta{
+	height: 150px;
+}
+.a-width{
+	width: 100% !important;
+}
+.rig-span{
+	width: 47%;
+	margin-bottom: 10px;
+}
+.aspan{
+	text-align: center;
+}
+}

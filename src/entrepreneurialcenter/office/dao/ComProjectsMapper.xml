@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="entrepreneurialcenter.office.dao.ComProjectsMapper" >
+  <resultMap id="BaseResultMap" type="entrepreneurialcenter.office.pojo.ComProjects" >
+    <id column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="com_id" property="comId" jdbcType="BIGINT" />
+    <result column="project_type" property="projectType" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_ind" property="projectInd" jdbcType="VARCHAR" />
+    <result column="project_allmoney" property="projectAllmoney" jdbcType="VARCHAR" />
+    <result column="project_time" property="projectTime" jdbcType="INTEGER" />
+    <result column="project_money" property="projectMoney" jdbcType="VARCHAR" />
+    <result column="project_status" property="projectStatus" jdbcType="CHAR" />
+    <result column="updated" property="updated" jdbcType="INTEGER" />
+    <result column="created" property="created" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    project_id, com_id, project_type, project_name, project_ind, project_allmoney, project_time, 
+    project_money, project_status, updated, created
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="entrepreneurialcenter.office.pojo.ComProjectsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from com_projects
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from com_projects
+    where project_id = #{projectId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from com_projects
+    where project_id = #{projectId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="entrepreneurialcenter.office.pojo.ComProjectsExample" >
+    delete from com_projects
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="entrepreneurialcenter.office.pojo.ComProjects" >
+    insert into com_projects (project_id, com_id, project_type, 
+      project_name, project_ind, project_allmoney, 
+      project_time, project_money, project_status, 
+      updated, created)
+    values (#{projectId,jdbcType=BIGINT}, #{comId,jdbcType=BIGINT}, #{projectType,jdbcType=VARCHAR}, 
+      #{projectName,jdbcType=VARCHAR}, #{projectInd,jdbcType=VARCHAR}, #{projectAllmoney,jdbcType=VARCHAR}, 
+      #{projectTime,jdbcType=INTEGER}, #{projectMoney,jdbcType=VARCHAR}, #{projectStatus,jdbcType=CHAR}, 
+      #{updated,jdbcType=INTEGER}, #{created,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="entrepreneurialcenter.office.pojo.ComProjects" >
+    insert into com_projects
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="comId != null" >
+        com_id,
+      </if>
+      <if test="projectType != null" >
+        project_type,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="projectInd != null" >
+        project_ind,
+      </if>
+      <if test="projectAllmoney != null" >
+        project_allmoney,
+      </if>
+      <if test="projectTime != null" >
+        project_time,
+      </if>
+      <if test="projectMoney != null" >
+        project_money,
+      </if>
+      <if test="projectStatus != null" >
+        project_status,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="comId != null" >
+        #{comId,jdbcType=BIGINT},
+      </if>
+      <if test="projectType != null" >
+        #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectInd != null" >
+        #{projectInd,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAllmoney != null" >
+        #{projectAllmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="projectTime != null" >
+        #{projectTime,jdbcType=INTEGER},
+      </if>
+      <if test="projectMoney != null" >
+        #{projectMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        #{projectStatus,jdbcType=CHAR},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="entrepreneurialcenter.office.pojo.ComProjectsExample" resultType="java.lang.Integer" >
+    select count(*) from com_projects
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update com_projects
+    <set >
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=BIGINT},
+      </if>
+      <if test="record.comId != null" >
+        com_id = #{record.comId,jdbcType=BIGINT},
+      </if>
+      <if test="record.projectType != null" >
+        project_type = #{record.projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectName != null" >
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectInd != null" >
+        project_ind = #{record.projectInd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectAllmoney != null" >
+        project_allmoney = #{record.projectAllmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectTime != null" >
+        project_time = #{record.projectTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectMoney != null" >
+        project_money = #{record.projectMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectStatus != null" >
+        project_status = #{record.projectStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.updated != null" >
+        updated = #{record.updated,jdbcType=INTEGER},
+      </if>
+      <if test="record.created != null" >
+        created = #{record.created,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update com_projects
+    set project_id = #{record.projectId,jdbcType=BIGINT},
+      com_id = #{record.comId,jdbcType=BIGINT},
+      project_type = #{record.projectType,jdbcType=VARCHAR},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      project_ind = #{record.projectInd,jdbcType=VARCHAR},
+      project_allmoney = #{record.projectAllmoney,jdbcType=VARCHAR},
+      project_time = #{record.projectTime,jdbcType=INTEGER},
+      project_money = #{record.projectMoney,jdbcType=VARCHAR},
+      project_status = #{record.projectStatus,jdbcType=CHAR},
+      updated = #{record.updated,jdbcType=INTEGER},
+      created = #{record.created,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="entrepreneurialcenter.office.pojo.ComProjects" >
+    update com_projects
+    <set >
+      <if test="comId != null" >
+        com_id = #{comId,jdbcType=BIGINT},
+      </if>
+      <if test="projectType != null" >
+        project_type = #{projectType,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectInd != null" >
+        project_ind = #{projectInd,jdbcType=VARCHAR},
+      </if>
+      <if test="projectAllmoney != null" >
+        project_allmoney = #{projectAllmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="projectTime != null" >
+        project_time = #{projectTime,jdbcType=INTEGER},
+      </if>
+      <if test="projectMoney != null" >
+        project_money = #{projectMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStatus != null" >
+        project_status = #{projectStatus,jdbcType=CHAR},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=INTEGER},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=INTEGER},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entrepreneurialcenter.office.pojo.ComProjects" >
+    update com_projects
+    set com_id = #{comId,jdbcType=BIGINT},
+      project_type = #{projectType,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      project_ind = #{projectInd,jdbcType=VARCHAR},
+      project_allmoney = #{projectAllmoney,jdbcType=VARCHAR},
+      project_time = #{projectTime,jdbcType=INTEGER},
+      project_money = #{projectMoney,jdbcType=VARCHAR},
+      project_status = #{projectStatus,jdbcType=CHAR},
+      updated = #{updated,jdbcType=INTEGER},
+      created = #{created,jdbcType=INTEGER}
+    where project_id = #{projectId,jdbcType=BIGINT}
+  </update>
+</mapper>

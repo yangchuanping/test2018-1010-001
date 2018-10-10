@@ -1,0 +1,133 @@
+.content{
+	width: 62%;
+	margin: 30px auto;
+	background-color: white;	
+	box-shadow: 0px 8px 30px -5px #8C8C8C;
+	padding: 30px 40px;
+	box-sizing: border-box;
+}
+.apply-title{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.apply-title img{
+	float: left;
+	margin-top: 3px;
+	margin-right: 10px;
+}
+.apply-title span{
+	font-size: 20px;
+	color: #4CB4FB;
+}
+.apply-title i{
+	font-style: normal;
+	font-size: 14px;
+	color: #4CB4FB;
+}
+.inside-box{
+	width: 100%;
+	border: 1px solid #E8E8E8;
+	border-radius: 3px;
+	box-sizing: border-box;
+	padding-bottom: 30px;
+}
+.list-box{
+	width: 100%;
+	margin-top: 30px;
+	overflow: hidden;
+}
+.left-box{
+	width: 40%;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 20px;
+	font-size: 18px;
+	color: #686868;
+}
+.left-box i{
+	font-style: normal;
+	color: red;
+}
+.right-box{
+	width: 60%;
+	float: left;
+	text-align: left;
+	box-sizing: border-box;
+	padding-left: 20px;
+}
+.banner{
+	width: 40%;
+	margin: 5px auto;
+	color: #99CFFB;
+	text-align: right;
+}
+.button{
+	width: 20%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 20px auto;
+	background-color: #4CB4FB;
+	color: white;
+	font-size: 22px;
+	border-radius: 5px;
+	cursor: pointer;	
+}
+.owidth{
+	width: 60%;	
+	height: 40px;
+}
+.ohight{
+	height: 40px;
+	line-height: 40px;
+	color: #686868;
+}
+
+
+/*移动设备*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+.content{
+	width: 100%;
+	margin: 0 0 -20px;
+	padding: 15px;
+}	
+.list-box{
+	margin-top: 15px;
+}
+.left-box{
+	font-size: 16px;
+	padding-right: 10px;
+}
+.right-box{
+	padding-left: 10px;
+}	
+.owidth{
+	width: 80% !important;
+}
+.button{
+	width: 30%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+}
+.ohight{
+	width: 100% !important;
+}
+.banner{
+	width: 100%;
+}
+}
+
+
+
+
+
+
+
+
+
+
+

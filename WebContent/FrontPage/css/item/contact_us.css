@@ -1,0 +1,110 @@
+.cont-img{
+	width: 100%;
+}
+.cont-img img{
+	width: 100%;
+}
+.cont-box{
+	width: 60%;
+	margin: 0 auto;
+}
+.cont-title{
+	width: 100%;
+	text-align: center;
+	margin: 20px 0 50px;
+}
+.cont-title i{
+	display: inline-block;
+	width: 40px;
+	height: 3px;
+	background-color: #000000;
+	margin-bottom: 6px;
+}
+.cont-title h2{
+	display: inline-block;
+	margin-bottom: 0;
+	font-size: 32px !important;
+	font-weight: 500 !important;
+}
+.cont-title p{
+	color: #9C9C9C;
+}
+.d-box{
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 40px;
+	text-align: center;
+}
+.d-box-left{
+	width: 47%;
+	float: left;
+	text-align: right;
+}
+.d-box-right{
+	width: 47%;
+	float: right;
+	text-align: left;
+}
+.d-box input{
+	width: 80%;
+	height: 60px;
+	padding: 10px;
+	color: #9C9C9C;
+	font-size: 14px;
+	box-sizing: border-box;
+	outline: none;
+}
+.d-box textarea{
+	width: 81%;
+	height: 200px;
+	box-sizing: border-box;
+	padding: 20px;
+	color: #9C9C9C;	
+	font-size: 14px;
+	outline: none;
+}
+.d-box button{
+	width: 50%;
+	height: 60px;
+	background-color: #4CB4FB;
+	color: white;
+	font-size: 26px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+
+/*移动设备*/
+@media only screen and (min-width: 100px) and (max-width: 769px) {
+.cont-box{
+	width: 100%;
+}
+.cont-title{
+	margin-bottom: 20px;
+}
+.cont-title h2{
+	font-size: 22px !important;
+	margin-top: 0;
+}
+.cont-title p{
+	font-size: 14px !important;
+}
+.c-l,.c-r{
+	width: 20px !important;
+}
+.d-box{
+	margin-bottom: 20px;
+}
+.d-box input{
+	height: 50px;
+}
+.d-box button{
+	height: 50px;
+	font-size: 20px;
+}
+
+
+}
